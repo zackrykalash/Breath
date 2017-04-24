@@ -1833,7 +1833,9 @@ appManager.controller('headController', [
               }
           }
         , QuoteWrapper: function () {
-            return $rootScope.Welcome.Quote() + " " + $rootScope.Settings.Settings.User.FirstName;
+                return ($rootScope.Settings.Settings.User.FirstName) ?
+             $rootScope.Welcome.Quote() + " " + $rootScope.Settings.Settings.User.FirstName
+                    : $rootScope.Welcome.Quote();
         }
         };
 
