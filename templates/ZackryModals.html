@@ -1,0 +1,16 @@
+<div class="modal fade {{zclass}}" id="{{modalid}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close {{ztextclass}}" data-dismiss="modal" aria-label="Close"><span class="{{ztextclass}}" aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title {{ztextclass}}" id="myModalLabel" ng-bind="modaltitle"></h4>
+            </div>
+            <div class="modal-body {{ztextclass}}" ng-transclude>
+            </div>
+            <div class="modal-footer clearfloat">
+                <zackry-simple-buttons zisempty="false" zisfocused="false" zid="close" zname="close" zlabel="Close" zhelp="Close" ztype="btn-default" zdatadismiss="modal"></zackry-simple-buttons>
+             
+            </div>
+        </div>
+    </div>
+</div>

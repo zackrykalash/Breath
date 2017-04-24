@@ -1,0 +1,14 @@
+﻿<zackry_panel paneltitle="Local Images" zshow="$root.Utils.ParseBool($root.Settings.Settings.Visibility.Local)" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="background in $root.Background.ConstantBackgrounds track by $index">
+            <figure class="snip0015">
+                <img ng-src="{{background.Image}}" alt="sample38" />
+                <figcaption>
+                    <h2></h2>
+                    <p></p>
+                    <a data-ng-click="$root.Background.ChangeBackground(background.Image)"></a>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</zackry_panel>

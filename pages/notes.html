@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <zackry_panel paneltitle="My Notes" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <zackry-buttons zonclick="$root.Notes.RemoveAll()" zclass="col-md-4" zisempty="false" zisfocused="false" zid="removeall" zname="removeall" zlabel="Remove All" zhelp="Remove All" ztype="btn-danger"></zackry-buttons>
+            </zackry_panel>
+
+            <zackry_panel paneltitle="My Notes" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+
+                <div class="row">
+                    <div class="col-md-6" ng-repeat="note in $root.Notes.Notes track by $index">
+                        <div class="panel {{$root.Notes.DateType(note.Date)}}">
+                            <div class="panel-heading" ng-bind-html="$root.Utils.SCE(note.Title)"></div>
+                            <div class="panel-body resetThis" ng-bind-html="$root.Utils.SCE(note.Value)"></div>
+                            <div class="panel-body">
+                                <div id="snackbar-container">
+                                    <div class="snackbar snackbar-opened display-inlineblock" ng-repeat="tag in note.Tags track by $index">
+                                        <span class="snackbar-content  wordbreakall " ng-bind-html="$root.Utils.SCE(tag)"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer" >
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <span ng-bind="note.Date | DisplayDateTime"></span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                                        <button class="btn btn-danger fix-btn-height nopadding nomargin text-right" type="button" ng-click="$root.Notes.Remove(note)">
+                                            <i class="fa fa-times text-danger"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </zackry_panel>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <zackry_panel paneltitle="Delete Links" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-include="'/pages/deletealllinks.html'"></div>
+                        <zackry-buttons zclass="col-md-3" zisempty="false" zisfocused="false" zid="downloadbackup" zname="downloadbackup" zlabel="Download Backup" zhelp="Download Backup" ztype="btn-info" zonclick="$root.Links.DownloadLinks()"></zackry-buttons>
+                        <zackry-input-file-upload zmode="text" zcallback="$root.Links.Callback($root.Links.File)" zmodel="$root.Links.File" zclass="col-md-3" zisempty="false" zisfocused="false" zid="uploadbackup" zname="uploadbackup" zlabel="Upload Backup" zhelp="Upload Backup" ztype="btn-info"></zackry-input-file-upload>
+                    </div>
+                </div>
+            </zackry_panel>
+
+            <zackry_panel paneltitle="Manage Links (Favorite <i class='fa fa-heart'></i> / Not Favorite <i class='fa fa-heart-o'></i>), Secret <i class='fa fa-user-secret' aria-hidden='true'></i> will hide links (tuggle secret to view hidden links)" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true"  zclass="col-md-3 col-sm-6 col-xs-6" ztype="text" zname="filterlinks" zid="filterlinks" zlabel="Filter your links:" zhelp="Filter your links" zmodel="linkSearch"></zackry_form_group_input>
+                        <zackry-form-group-toggle zchecked="($root.Links.SecretVisibility)"  zclass="col-md-3 col-sm-6 col-xs-6" ztextoff="No" ztexton="Yes" ztype="toggle--push toggle--push--glow" zname="secretvisibility" zid="secretvisibility" zhelp="Toggle this" zonclick="$root.Links.TuggleSecretVisibility()" zicon="fa-user-secret"></zackry-form-group-toggle>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="($root && $root.Links.Links && $root.Links.Links.length > 0)">
+                    <div class="col-md-2" ng-repeat="link in $root.Links.Links | orderBy: ['-Favorite','-Count']  | filter: linkSearch track by $index" ng-show="($root.Links.ShowSecret(link.Secret))">
+                        <figure class="snip1249">
+                            <div class="image">
+                                <img ng-src="{{$root.Utils.ToBase64URL(link.Image)}}" alt="sample90" />
+                                <i ng-class="(link.Favorite == true) ? 'fa-heart' : 'fa-heart-o'" class="favorite-icon fa" data-ng-click="$root.Links.TuggleFavorite(link)"></i>
+                                <i ng-class="(link.Secret == true) ? '' : 'text-muted'" class="private-icon fa fa-user-secret" data-ng-click="$root.Links.TuggleSecret(link)"></i>
+                            </div>
+                            <figcaption>
+                                <h3>{{link.Title}}</h3>
+                                <p>{{link.URL}}</p>
+                                <div class="price">
+                                    Count: {{link.Count}}
+                                </div>
+                                <a class="add-to-cart" data-ng-click="$root.Links.RemoveLink(link)">Remove Link</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </zackry_panel>
+        </div>
+    </div>
+</div>

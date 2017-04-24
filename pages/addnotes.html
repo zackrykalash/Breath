@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <form class="col-md-12 usersadd percntage_form remove_input_padding" enctype="multipart/form-data">
+
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="title" zid="title" zlabel="Title" zhelp="Title" zmodel="$root.Notes.Note.Title"></zackry-form-group-input>
+
+                    <zackry-text-editor zmodel="$root.Notes.Note.Value" zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-12" zname="note" zid="note" zlabel="Note" zhelp="Note"></zackry-text-editor>
+
+                    <zackry-date-time-picker zmodel="$root.Notes.Note.Date" ztextclass="{{$root.Colors.Text}}" zisfocused="true" zisempty="true" zclass="col-md-4" ztype="text" ztuggleid="datetimetuggle" ztugglename="datetimetuggle" zname="datetime" zid="datetime" zlabel="Date Time" zhelp="Date Time"></zackry-date-time-picker>
+
+                    <zackry-chipds-input zarraymodel="$root.Notes.Note.Tags" zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-8" zname="tags" zid="tags" zlabel="Tags" zhelp="Tags"></zackry-chipds-input>
+
+                </form>
+            </zackry_panel>
+
+            <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" ng-bind-html="$root.Utils.SCE($root.Notes.Note.Title)"></div>
+                    <div class="panel-body resetThis" ng-bind-html="$root.Utils.SCE($root.Notes.Note.Value)"></div>
+                    <div class="panel-body">
+                        <div id="snackbar-container">
+                            <div class="snackbar snackbar-opened display-inlineblock" ng-repeat="tag in $root.Notes.Note.Tags track by $index">
+                                <span class="snackbar-content  wordbreakall " ng-bind-html="$root.Utils.SCE(tag)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" ng-bind-html="$root.Utils.SCE($root.Notes.Note.Date)"></div>
+                </div>
+
+
+                <zackry-buttons zonclick="$root.Notes.Save()" zdisabled="$root.Notes.NotValid()" zclass="col-md-4" zisempty="false" zisfocused="false" zid="save" zname="save" zlabel="Save" zhelp="Save" ztype="btn-default"></zackry-buttons>
+
+            </zackry_panel>
+
+        </div>
+    </div>
+</div>

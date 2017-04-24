@@ -1,0 +1,37 @@
+﻿<zackry-footer zshow="$root.Utils.ParseBool($root.Settings.Settings.Visibility.Footer)">
+    <div class="col-md-12" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.ChromeLinks)">
+        <br>
+        <h1 class="{{$root.Colors.Text}}">Chrome Links</h1>
+    </div>
+    <div class="col-md-12" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.ChromeLinks)">
+        <br>
+        <div class="footerContainer row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <zackry-footer-buttons-list>
+                    <zackry-footer-buttons title="History" clickhandler="$root.TabUpdateUrl('chrome://history')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Downloads" clickhandler="$root.TabUpdateUrl('chrome://downloads')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Settings" clickhandler="$root.TabUpdateUrl('chrome://settings')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Extensions" clickhandler="$root.TabUpdateUrl('chrome://extensions')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Bookmarks Manager" clickhandler="$root.TabUpdateUrl('chrome://bookmarks')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Apps" clickhandler="$root.TabUpdateUrl('chrome://apps')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Chrome URLs" clickhandler="$root.TabUpdateUrl('chrome://chrome-urls')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Plugins" clickhandler="$root.TabUpdateUrl('chrome://chrome/')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Chrome" clickhandler="$root.TabUpdateUrl('chrome://plugins')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Crashes" clickhandler="$root.TabUpdateUrl('chrome://crashes/')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Devices" clickhandler="$root.TabUpdateUrl('chrome://devices/')"></zackry-footer-buttons>
+                    <zackry-footer-buttons title="Flags" clickhandler="$root.TabUpdateUrl('chrome://flags/')"></zackry-footer-buttons>
+                </zackry-footer-buttons-list>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.FooterFavorites)">
+        <br>
+        <h1 class="{{$root.Colors.Text}}">My Favorite Links</h1>
+    </div>
+    <div class="col-md-12" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.FooterFavorites)">
+        <br>
+        <zackry-footer-buttons-list>
+            <button ng-repeat="link in $root.Links.Links | orderBy: ['-Favorite','-Count']  | filter: linkSearch track by $index" ng-if="(link.Favorite == true)" type="button" class="btn btn-default {{$root.Colors.Text}} overriderlistgroupitem col-md-2 col-sm-4 col-xs-12"><a href="{{link.URL}}" ng-bind="link.Title" data-ng-click="$root.Links.Counter(link)"></a></button>
+        </zackry-footer-buttons-list>
+    </div>
+</zackry-footer>

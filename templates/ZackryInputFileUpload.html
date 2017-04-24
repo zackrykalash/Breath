@@ -1,0 +1,6 @@
+<div class="form-group form-group-lg label-floating {{zclass}}" style="margin: 20px 0 0 0;" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label  {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zlabel)"></label>
+    <ng-file-input mode="{{zmode}}" callback="callback(zmodel)" ng-model="zmodel"></ng-file-input>
+    <button type="button" role="button" class="form-control btn-raised btn {{ztype}}" href="{{zhref}}" name="{{zname}}" id="{{zid}}" ng-bind-html="zlabel"></button>
+     <!--<span class="help-block  {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zhelp)"></span>-->
+</div>

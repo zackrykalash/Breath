@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+            <zackry_panel paneltitle="Image Source" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="remove_input_padding">
+                            <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-6" ztype="text" zname="backgroundurl" zid="backgroundurl" zlabel="Background Url" zhelp="Background Url" zmodel="$root.Background.BackgroundUrl" zonchange="$root.Background.onChangeBackground($root.Background.BackgroundUrl)"></zackry_form_group_input>
+                        </form>
+                    </div>
+                </div>
+            </zackry_panel>
+            <div ng-include="'/pages/localbackground.html'"></div>
+            <div ng-include="'/pages/uploadedbackground.html'"></div>
+        </div>
+    </div>
+</div>

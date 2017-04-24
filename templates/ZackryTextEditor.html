@@ -1,0 +1,5 @@
+<div class="form-group form-group-lg label-floating {{zclass}}" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zlabel)"></label>
+    <wysiwyg-edit required name="{{zname}}" class="{{ztextclass}}" id="{{zid}}" data-ng-click="zonClick()" ng-keyup="setevent(zevent=$event);" content="zmodel" config="editorConfig"></wysiwyg-edit>
+    <span class="help-block {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zhelp)"></span>
+</div>

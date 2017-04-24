@@ -1,0 +1,36 @@
+﻿<zackry_panel paneltitle="Uploaded Images" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="remove_input_padding">
+                <zackry_form_group_input_file_multiple ztextclass="{{$root.Colors.Text}}" maxnum="1" zclass="col-md-4" zisempty="true" ztype="text" zname="background" zid="background" zlabel="Upload background images" zhelp="Upload background images" zmodel="$root.Background.Background" zaccept="image/*"></zackry_form_group_input_file_multiple>
+                <button ng-disabled="($root.Background.Background == [] || $root.Background.Background.length == 0)" class="btn btn-success fix-btn-height" type="button" ng-click="$root.Background.AddBackground()">
+                    Upload images
+                    <i class="fa fa-upload"></i>
+                </button>
+                <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#deletealluploadedimages" zclass="col-md-3" zisempty="false" zisfocused="false" zlabel="Delete All" zhelp="Delete All" ztype="btn-danger"></zackry-modal-buttons>
+                <!-- links Modal -->
+                <zackry-modals modalid="deletealluploadedimages" modaltitle="Delete All Uploaded Images" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <p class="text-danger">Are you sure you want to delete all Uploaded Images?</p>
+                    <button class="btn btn-danger fix-btn-height" data-dismiss="modal" type="button" ng-click="$root.Background.RemoveAll()">
+                        Delete All
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </zackry-modals>
+            </form>
+        </div>
+
+        <div class="col-md-3 col-sm-4 col-xs-12 image-wrapper-box" ng-repeat="background in $root.Background.Backgrounds track by $index">
+            <figure class="snip0015">
+                <img ng-src="{{background.Image}}" alt="sample38" />
+                <figcaption>
+                    <h2>Select</h2>
+                    <p></p>
+                    <a data-ng-click="$root.Background.ChangeBackground(background.Image)"></a>
+                </figcaption>
+            </figure>
+            <button class="btn btn-danger remove-button fix-btn-height nopadding nomargin text-right" type="button" ng-click="$root.Background.Remove(background)">
+                <i class="fa fa-times text-danger"></i>
+            </button>
+        </div>
+    </div>
+</zackry_panel>

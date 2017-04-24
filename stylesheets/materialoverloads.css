@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+    .navbar a.navbar-brand.brandspace {
+        float: none !important;
+    }
+    .navbar .navbar-header{text-align: center;}
+    .navbar h1.navbar-brand.brandspace.breath {
+        float: none;
+        display: inline-block;
+    }
+}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-scrollbar              {display: none;}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-scrollbar-button       {}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-scrollbar-track        {}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-scrollbar-track-piece  {}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-scrollbar-thumb        {}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-scrollbar-corner       {}
+.navbar .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse::-webkit-resizer                {}
+
+.navbar h1.navbar-brand.brandspace.breath {
+    height: initial;
+}
+
+.brandspace{
+    margin: 9px auto !important;
+    padding: 5px 15px !important;
+}

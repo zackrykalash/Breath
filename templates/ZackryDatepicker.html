@@ -1,0 +1,5 @@
+<div class="form-group form-group-lg label-floating {{zclass}}" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label" ng-bind-html="$root.Utils.SCE(formatzlable())"></label>
+    <input required pick-a-date="date" pick-a-date-options="zoptions"  type="{{ztype}}" name="{{zname}}" class="form-control" id="{{zid}}" ng-model="zmodel" data-ng-click="zonClick()" ng-change="zonchange()" ng-keyup="zkeyup()">
+    <span class="help-block" ng-bind-html="$root.Utils.SCE(formatzhelp())"></span>
+</div>

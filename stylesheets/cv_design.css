@@ -1,0 +1,41 @@
+.cv_design_block{background: rgba(238, 238, 238, 0.5);}
+.cv_design_block .cv_design_block_group{margin-top: 30px;margin-bottom: 60px;}
+.cv_design_block_group .cv_design_headTitle{}
+.cv_design_block_group .cv_design_headTitle h1{font-size: 3em;}
+.cv_design_block_group .cv_design_headTitle h1 .small{}
+.cv_design_block_group .cv_design_headTitle h4{font-size: 3em;}
+.cv_design_block_group .cv_design_headTitle h4 .small{}
+.cv_design_block_group .cv_design_group_contact_list{}
+.cv_design_block_group .cv_design_group_contact_list ul{}
+.cv_design_block_group .cv_design_group_contact_list ul li{font-size: 1.3em;word-wrap: break-word;}
+.cv_design_block_group .cv_design_group_title{}
+.cv_design_block_group .cv_design_group_title h1{}
+.cv_design_block_group .cv_design_group_title h1 .small{}
+.cv_design_block_group .cv_design_group_title h4{
+  font-size: 2em;
+  text-decoration: underline;
+}
+.cv_design_block_group .cv_design_group_title h4 .small{}
+.cv_design_block_group .cv_design_group_body{}
+.cv_design_block_group .cv_design_group_body ul{}
+.cv_design_block_group .cv_design_group_body ul li{
+  font-size: 1.2em;
+}
+.cv_design_block_group .cv_design_group_body p{font-size: 1.2em;}
+.cv_design_block_group .cv_design_group_body table{}
+.cv_design_block_group .cv_design_group_body table tr{}
+.cv_design_block_group .cv_design_group_body table tr td{border-bottom: 1px solid rgba(51,51,51,0.1) !important;border-top: 1px solid rgba(51,51,51,0.1) !important;font-size: 1.2em;}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innertitle{}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innertitle h1{}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innertitle h1 .small{}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innertitle h4{
+  font-size: 1.5em;
+}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innertitle h4 .small{}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innerbody{}
+.cv_design_block_group .cv_design_group_body .cv_design_innergroup .cv_design_innergroup_innerbody p{}
+.cv_design_block .hr{border-color: rgba(51,51,51,0.1);}

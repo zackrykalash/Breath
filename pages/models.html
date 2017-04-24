@@ -1,0 +1,14 @@
+﻿<zackry-modals modalid="alarmnote" modaltitle="Alarm reminder" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+    <div class="panel {{$root.Notes.DateType($root.Notes.AlarmNote.Date)}}">
+        <div class="panel-heading" ng-bind-html="$root.Utils.SCE($root.Notes.AlarmNote.Title)"></div>
+        <div class="panel-body resetThis" ng-bind-html="$root.Utils.SCE($root.Notes.AlarmNote.Value)"></div>
+        <div class="panel-body">
+            <div id="snackbar-container">
+                <div class="snackbar snackbar-opened display-inlineblock" ng-repeat="tag in $root.Notes.AlarmNote.Tags track by $index">
+                    <span class="snackbar-content  wordbreakall " ng-bind-html="$root.Utils.SCE(tag)"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer" ng-bind="$root.Notes.AlarmNote.Date | DisplayDateTime"></div>
+    </div>
+</zackry-modals>

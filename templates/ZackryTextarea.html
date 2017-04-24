@@ -1,0 +1,5 @@
+<div class="form-group form-group-lg label-floating {{zclass}}"  ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label" ng-bind-html="$root.Utils.SCE(zlabel)"></label>
+    <textarea class="form-control floating-label" rows="{{zrows}}" placeholder="{{zlabel}}" ng-model="zmodel" name="{{zname}}" id="{{zid}}" data-ng-click="zonClick()" ng-change="zonChange()"></textarea>
+    <span class="help-block" ng-bind-html="$root.Utils.SCE(zhelp)"></span>
+</div>

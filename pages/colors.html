@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+            <zackry_panel paneltitle="Selectors" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <h1 class="{{$root.Colors.Text}}">Heading 1</h1>
+                        <h2 class="{{$root.Colors.Text}}">Heading 2</h2>
+                        <h3 class="{{$root.Colors.Text}}">Heading 3</h3>
+                        <h4 class="{{$root.Colors.Text}}">Heading 4</h4>
+                        <h5 class="{{$root.Colors.Text}}">Heading 5</h5>
+                        <h6 class="{{$root.Colors.Text}}">Heading 6</h6>
+                        <p class="{{$root.Colors.Text}}">Paragraph</p>
+                    </div>
+                </div>
+            </zackry_panel>
+
+            <zackry_panel paneltitle="Selectors">
+                <form class="col-md-12 usersadd percntage_form remove_input_padding" id="usersadd" method="post" enctype="multipart/form-data">
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="text" zid="text" zlabel="Text" zhelp="Text" zchoices="$root.Colors.Texts" zmodel="$root.Colors.Text"></zackry_form_group_select>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="background" zid="background" zlabel="Background" zhelp="Background" zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.Background"></zackry_form_group_select>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="opcity" zid="opcity" zlabel="Opcity" zhelp="Opcity" zchoices="$root.Colors.Opacities" zmodel="$root.Colors.Opacity"></zackry_form_group_select>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="bodybackgrounds" zid="bodybackgrounds" zlabel="Body Backgrounds" zhelp="Body Backgrounds" zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.BodyBackgrounds"></zackry_form_group_select>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatecolors" zname="updatecolors" zlabel="Update Colors" zhelp="Update Colors" ztype="btn-primary" zonclick="$root.Colors.Save()"></zackry-buttons>
+                  </form>
+            </zackry_panel>
+
+            <zackry_panel paneltitle="Background Colors">
+                <div class="row">
+                    <div class="col-md-12">
+                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filterbackgrounds" zid="filterbackgrounds" zlabel="Filter your backgrounds:" zhelp="Filter your backgrounds" zmodel="backgroundSearch"></zackry_form_group_input>
+                    </div>
+                </div>
+                <div class="background-color-container">
+                    <div class="background-color-item-group" ng-repeat="backgrounds in $root.Colors.BackgroundsObjects track by $index">
+                        <div class="background-color-item-group-container">
+                            <div class="background-color-item-group-item {{background.Value}} btn" ng-repeat="background in backgrounds | filter: backgroundSearch track by $index" data-ng-click="$root.Colors.ChangeBackgroundColor(background)">
+                                <h4 ng-bind="background.Title" class="{{$root.Colors.Text}}"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </zackry_panel>
+
+            <zackry_panel paneltitle="Text Colors">
+                <div class="row">
+                    <div class="col-md-12">
+                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filtertextcolor" zid="filtertextcolor" zlabel="Filter your text color:" zhelp="Filter your text color:" zmodel="textcolorSearch"></zackry_form_group_input>
+                    </div>
+                </div>
+                <div class="text-color-container">
+                    <div class="text-color-item-group" ng-repeat="texts in $root.Colors.TextsObjects track by $index">
+                        <div class="text-color-item-group-container">
+                            <div class="text-color-item-group-item {{$root.Colors.Background  + ' ' + $root.Colors.Opacity}} btn" ng-repeat="text in texts | filter: textcolorSearch track by $index" data-ng-click="$root.Colors.ChangeTextColor(text)">
+                                <h4 ng-bind="text.Title" class="{{text.Value}}"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </zackry_panel>
+
+        </div>
+    </div>
+</div>

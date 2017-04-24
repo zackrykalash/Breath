@@ -1,0 +1,29 @@
+<div class="welcomescreen nopadding nomargin width100height100 {{$root.Colors.Text}}  {{$root.Welcome.Visibility()}}" ng-click="$root.Welcome.Hide()" ng-mousemove="$root.Welcome.MouseMove()" ng-keydown="$root.Welcome.Hide()">
+    <div class="welcomescreencontainer width100height100">
+        <div class="welcomescreendiv welcomescreendata width100height100">
+            <div class="welcomebox nopadding nomargin width100height100">
+                <div class="width100height100 nopadding nomargin welcomeupper ">
+                    <div class="width100height100 nopadding nomargin ">
+
+                    </div>
+                </div>
+                <div class="width100height100 nopadding nomargin welcomemiddle ">
+                    <div class="nopadding nomargin width100height100 textalignCenter font2em"> <!--ng-if="!$root.Welcome.GetInputPassword()"-->
+                        <h1 class="nopadding nomargin width100 block" ng-bind="$root.Welcome.Time()"></h1><h2 class="nopadding nomargin width100 block" ng-bind="$root.Welcome.Date()"></h2><h3 class="nopadding nomargin width100 block" ng-bind="$root.Welcome.QuoteWrapper()"></h3>
+                    </div>
+                    <div class="nopadding margin0pxauto height100pc width50pc textalignCenter font2em loginpassword" ng-if="$root.Welcome.GetInputPassword()">
+                        <zackry-form-group-input zisempty="true"  ztextclass="{{$root.Colors.Text}}" zclass="col-md-6" ztype="password" zname="loginpassword" zid="loginpassword" zlabel="Login Password" zhelp="Login Password" zmodel="loginPassword" zevent="event" zkeyup="$root.Password.KeyUp(event,loginPassword)"></zackry-form-group-input>
+                        <zackry-buttons zclass="col-md-6" zisempty="false" zisfocused="false" zid="unlock" zname="unlock" zlabel="Unlock" zhelp="Unlock" ztype="btn-success" zonclick="$root.Password.Unlock(loginPassword)"></zackry-buttons>
+                    </div>
+                </div>
+                <div class="width100height100 nopadding nomargin welcomebottom ">
+                    <div class="width100height100 nopadding nomargin ">
+                        <div class="width100height100 nopadding nomargin ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="form-group form-group-lg label-floating dropdown {{zclass}}" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label {{ztextclass}}" ng-bind-html="$root.Utils.SCE(formatzlable())"></label>
+
+    <a class="dropdown-toggle" id="{{ztuggleid}}" name="{{ztugglename}}" role="button" data-toggle="dropdown" data-target="#">
+        <div class="input-group date">
+            <input required readonly="true" type="text" name="{{zname}}" id="{{zid}}" class="form-control {{ztextclass}}" data-ng-model="zmodel" ng-change="validate()">
+            <!--<span class="input-group-addon relative" ng-hide="true">
+                <span class="input-group-addon icon-fa-calendar {{ztextclass}}"><i class="fa fa-calendar"></i></span>
+                <span class="input-group-addon absolute icon-fa-clock {{ztextclass}}"><i class="fa fa-clock-o"></i></span>
+                <span class="input-group-addon icon-fa-trash text-danger" ng-click="clearDate()"><i class="fa fa-trash"></i></span>
+                <span class="input-group-addon absolute icon-fa-times text-danger" ng-click="clearDate()"><i class="fa fa-times"></i></span>
+            </span>-->
+            <span class="input-group-addon relative" ng-show="!zmodel">
+                <span class="input-group-addon icon-fa-calendar {{ztextclass}}"><i class="fa fa-calendar"></i></span>
+                <span class="input-group-addon absolute icon-fa-clock {{ztextclass}}"><i class="fa fa-clock-o"></i></span>
+            </span>
+            <span class="input-group-addon relative" ng-show="zmodel">
+                <!--<span class="input-group-addon icon-fa-trash text-danger" ng-click="clearDate()"><i class="fa fa-trash"></i></span>-->
+                <span class="input-group-addon icon-fa-calendar text-danger" ng-click="clearDate()"><i class="fa fa-calendar"></i></span>
+                <span class="input-group-addon absolute icon-fa-times text-danger" ng-click="clearDate()"><i class="fa fa-times"></i></span>
+            </span>
+        </div>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <datetimepicker data-ng-model="zmodel"
+                        data-datetimepicker-config="zconfig"
+                        data-on-set-time="endDateOnSetTime()"
+                        data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+    </ul>
+
+    <span class="help-block block {{ztextclass}}" ng-bind-html="$root.Utils.SCE(formatzhelp())"></span>
+    <style>
+        .icon-fa-clock, .icon-fa-times {
+            right: 24px;
+            top: 30px;
+        }
+
+        /*.icon-fa-trash, .icon-fa-times, .input-group-addon:hover .icon-fa-clock, .input-group-addon:hover .icon-fa-calendar {
+            display: none;
+        }
+
+        .input-group-addon:hover .icon-fa-trash, .input-group-addon:hover .icon-fa-times {
+            display: table-cell;
+        }*/
+    </style>
+</div>

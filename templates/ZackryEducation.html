@@ -1,0 +1,56 @@
+<div class="row section education_group">
+
+    <div class="col-mg-12">
+        <div class="row">
+
+            <h1 ng-bind-html="counter"></h1>
+
+            <div class="form-group">
+                <label for="course_name_{{counter}}"><i class="small mdi mdi-book-open"></i> Course Name</label>
+                <input placeholder="Course Name" id="course_name_{{counter}}" name="course_name[]" type="text" class="course_name validate" ng-model="course_name[{{counter}}]">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="institution_name_{{counter}}"><i class="small mdi mdi-factory"></i> Institution name</label>
+                <input placeholder="Institution name" id="institution_name_{{counter}}" name="institution_name[]" type="text" class="institution_name validate" ng-model="institution_name[{{counter}}]">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="edu_start_date_{{counter}}"><i class="small mdi mdi-calendar-today"></i> Start date</label>
+                <input type="date" class="datepicker edu_start_date validate" id="edu_start_date_{{counter}}" name="edu_start_date[]"  ng-model="edu_start_date[{{counter}}]">
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-group">
+                <label ng-show="(edu_current[counter] == 0)" for="edu_end_date_{{counter}}"><i class="small mdi mdi-calendar-multiple"></i> End date</label>
+                <input ng-show="(edu_current[counter] == 0)"  type="date" class="datepicker edu_end_date validate" id="edu_end_date_{{counter}}" name="edu_end_date[]"  ng-model="edu_end_date[{{counter}}]">
+                <p ng-show="(edu_current[counter] == 0)"  class="help-block"></p>
+
+                <div class="checkbox">
+                    <label class="edu_current" for="edu_current_{{counter}}">
+                        <input type="checkbox" value="1"  id="edu_current_{{counter}}" class="edu_current" name="edu_current[]"    ng-model="edu_current[{{counter}}]" />
+                        <i class="small mdi mdi-calendar-multiple"></i> Current
+                    </label>
+                    <label class="edu_not_current" for="edu_not_current_{{counter}}"  style="display: none;">
+                        <input type="checkbox" value="0"  id="edu_not_current_{{counter}}" class="edu_not_current" name="edu_current[]"  checked="checked" />
+                        <i class="small mdi mdi-calendar-multiple"></i> Not Current
+                    </label>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+            <!--<div class="form-group">
+                <label for="edu_other_information_{{counter}}"><i class="small mdi mdi-clipboard-text"></i> Other information</label>
+                <text-angular class="edu_other_information"  id="edu_other_information_{{counter}}"  name="edu_other_information[]" ng-model="edu_other_information[{{counter}}]"></text-angular>
+
+                <p class="help-block"></p>
+            </div>-->
+        </div>
+
+        <div><a class="btn-floating btn-large waves-effect waves-light red remove_education"><i class="small mdi mdi-minus"></i></a></div>
+
+        <li class="divider grey darken-3"></li>
+    </div>
+</div>

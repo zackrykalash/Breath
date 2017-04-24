@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <zackry_panel paneltitle="Shipments" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+
+                <figure class="snip1515 col-md-3" ng-repeat="item in $root.Shipment.Items | orderBy: ['Recieved','-DaysLeft']">
+                    <div class="profile-image"><img ng-src="{{$root.Utils.ToBase64URL(item.Picture)}}" alt="sample47" /></div>
+                    <figcaption>
+                        <h3 ng-bind="item.Title" class="text-info"></h3>
+                        <hr ng-if="item.Number">
+                        <h4 ng-if="item.Number">Track Number <span class="text-danger" ng-bind="item.Number"></span></h4>
+                        <hr ng-if="item.DateExpected">
+                        <h4 ng-if="item.DateExpected">Expected on <span class="text-primary" ng-bind="item.DateExpected"></span></h4>
+                        <hr ng-if="item.DaysLeft && (item.DaysLeft.Passed == false)">
+                        <h4 ng-if="item.DaysLeft && (item.DaysLeft.Passed == false)"><span ng-if="item.DaysLeft.Years > 0" class="text-warning" ng-bind="item.DaysLeft.Years + ' Years, '"></span><span ng-if="item.DaysLeft.Months > 0" class="text-warning" ng-bind="item.DaysLeft.Months + ' Months, '"></span><span ng-if="item.DaysLeft.Days > 0" class="text-warning" ng-bind="item.DaysLeft.Days + ' Days'"></span> left (approximately)</h4>
+                        <hr ng-if="item.DaysLeft && (item.DaysLeft.Passed == true)">
+                        <h4 ng-if="item.DaysLeft && (item.DaysLeft.Passed == true)"><span lang="text-warning"></span>Date of delivery have already passed.</h4>
+                        <hr ng-if="item.DaysLeft && (item.DaysLeft.Passed == false)">
+                        <h4 ng-if="item.DaysLeft && (item.DaysLeft.Passed == false)">Progress <span ng-if="(item.DaysLeft.Percentage <= 100)">{{item.DaysLeft.Percentage | number : 0}} %</span><span ng-if="(item.DaysLeft.Percentage > 100)">100%</span></h4>
+                        <h4 ng-if="item.DaysLeft && (item.DaysLeft.Passed == false)"><span class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{item.DaysLeft.Percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.DaysLeft.Percentage}}%;"></span></h4>
+                        <hr>
+                        <h4 data-ng-click="$root.Shipment.TuggleRecieved(item)" class="cursor-pointer"><span ng-if="(item.Recieved == false)" class="text-danger">Not recieved</span><span ng-if="(item.Recieved == true)" class="text-success">Recieved</span></h4>
+                        <h4 data-ng-click="$root.Shipment.TuggleShipped(item)" class="cursor-pointer"><span ng-if="(item.Shipped == false)" class="text-danger">Not shipped</span><span ng-if="(item.Shipped == true)" class="text-success">Shipped</span></h4>
+                        <hr>
+                        <h4 ng-if="item.Number">
+                            <zackry-buttons zclass="col-md-12" zisempty="false" zisfocused="false" zid="track" zname="track" zlabel="Track" zhelp="Track" ztype="btn-info" zonclick="$root.Shipment.DoTrack(item.Number)"></zackry-buttons>
+                            <div id="YQContainer"></div>
+                        </h4>
+                        <div class="icons">
+                            <a data-toggle="modal" data-target="#deleteitem" data-ng-click="$root.Shipment.AddToRemoveItem(item)"><i class="fa fa-times text-danger" aria-hidden="true"></i></a>
+                        </div>
+                    </figcaption>
+                </figure>
+
+                <!-- Items Modal -->
+                <zackry-modals modalid="deleteitem" modaltitle="Delete Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <p class="text-danger">Are you sure you want to delete this item?</p>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="yes" zname="yes" zlabel="Yes" zhelp="Yes" ztype="btn-danger" zdatadismiss="deleteitem" zonclick="$root.Shipment.RemoveItem()"></zackry-buttons>
+                </zackry-modals>
+            </zackry_panel>
+        </div>
+    </div>
+</div>

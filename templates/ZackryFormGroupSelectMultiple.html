@@ -1,0 +1,8 @@
+<div class="form-group form-group-lg label-floating {{zclass}}" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}"  ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label  {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zlabel)"></label>
+    <select multiple id="{{zid}}" class="form-control  {{ztextclass}}" name="{{zname}}" data-ng-click="zonClick()" ng-change="zonChange()" ng-model="zmodel">
+        <!--<option value="" disabled selected>Choose {{zlabel}}</option>-->
+        <option class="text-black" value="{{zvalue.Value}}" ng-selected="(zvalue.Value === zinitial)"  ng-repeat="zvalue in zchoices track by $index">{{zvalue.Title}}</option>
+    </select>
+    <!--<span class="help-block  {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zhelp)"></span>-->
+</div>

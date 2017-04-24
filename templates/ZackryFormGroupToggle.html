@@ -1,0 +1,8 @@
+<div class="form-group form-group-lg label-floating {{zclass}}" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <!--ng-bind-html="$root.Utils.SCE(zlabel)-->
+    <div class="funky-toggle {{ztype}}">
+        <input type="checkbox" ng-checked="zchecked" id="{{zid}}" name="{{zname}}" class="toggle--checkbox" ng-model="zmodel"  data-ng-click="zonclick()" ng-change="zonchange()">
+        <label class="toggle--btn" for="{{zid}}" data-label-on="{{ztexton}}" data-label-off="{{ztextoff}}"><span ng-show="(ztype == 'toggle--knob' || ztype == 'toggle--switch')" class="toggle--feature" data-label-on="{{ztexton}}" data-label-off="{{ztextoff}}"></span><i ng-show="(!!zicon) && (ztype == 'toggle--push toggle--push--glow')" class='fa {{zicon}} toggle-icon' aria-hidden='true'></i></label>
+    </div>
+    <!--<span class="help-block {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zhelp)"></span>-->
+</div>

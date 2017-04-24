@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <form class="col-md-12 usersadd percntage_form remove_input_padding" enctype="multipart/form-data">
+                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="text" zname="title" zid="title" zlabel="Title" zhelp="Title" zmodel="$root.Links.Link.Title"></zackry_form_group_input>
+                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="url" zname="url" zid="url" zlabel="URL" zhelp="URL" zmodel="$root.Links.Link.URL"></zackry_form_group_input>
+                    <!--<zackry_form_group_input zclass="col-md-4" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image (URL or Local Path)" zhelp="Image (URL or Local Path)" zmodel="$root.Links.Link.Image"></zackry_form_group_input>-->
+                    <zackry_form_group_input_file ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image" zhelp="Image" zmodel="$root.Links.Link.Image" zmaxsize="5242880" zaccept="image/*"></zackry_form_group_input_file>
+
+                    <div class="row" ng-if="($root.Links.IsLinkFilled())">
+                        <div class="col-md-4">
+                            <figure class="snip1084 red">
+                                <img ng-src="{{$root.Utils.ToBase64URL($root.Links.Link.Image)}}" alt="sample43" />
+                                <figcaption>
+                                    <h2><span>{{$root.Links.Link.Title}}</span></h2>
+                                    <p>{{$root.Links.Link.URL}}</p>
+                                </figcaption>
+                                <a></a>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <zackry-buttons zdisabled="($root.Links.IsLinkEmpty())" zclass="col-md-4" zisempty="false" zisfocused="false" zid="addlink" zname="addlink" zlabel="Add Link" zhelp="Add Link" ztype="btn-default" zonclick="$root.Links.Save()"></zackry-buttons>
+                            <div ng-include="'/pages/deletealllinks.html'"></div>
+                         </div>
+                    </div>
+                </form>
+            </zackry_panel>
+
+            <!--<zackry_panel paneltitle="Basic Information">
+            <div class="block well-danger col-md-3" ng-repeat="link in $root.Links.BLinksDemos track by $index">
+                    <p ng-bind="link.Title"></p>
+                    <p ng-bind="link.URL"></p>
+                    <p><a ng-click="$root.addit(link)">add it</a></p>
+                    <p><a ng-click="$root.removeit($index)">remove it</a></p>
+            </div>
+        </zackry_panel>-->
+        </div>
+    </div>
+</div>

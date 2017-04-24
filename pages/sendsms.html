@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+            <form  class="col-md-12 usersadd percntage_form remove_input_padding"  method="post" enctype="multipart/form-data">
+
+                <zackry_panel paneltitle="Send SMS">
+                    <zackry_form_group_input class="col-md-3" id="AppSid" type="AppSid" name="AppSid" formgroupinputtype="text" formgroupinputmodel="$root.rootScope.SMS.OneSmsData.AppSid"></zackry_form_group_input>
+                    <zackry_form_group_input class="col-md-3" id="Recipient" type="Recipient" name="Recipient" formgroupinputtype="text" formgroupinputmodel="$root.rootScope.SMS.OneSmsData.Recipient"></zackry_form_group_input>
+                    <zackry_form_group_input class="col-md-3" id="Body" type="Body" name="Body" formgroupinputtype="text" formgroupinputmodel="$root.rootScope.SMS.OneSmsData.Body"></zackry_form_group_input>
+                </zackry_panel>
+
+                <zackry_panel paneltitle="Submit">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success fix-btn-height" type="button" ng-click="$root.rootScope.SMS.SendSMS()">Send SMS
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </zackry_panel>
+            </form>
+        </div>
+    </div>
+</div>

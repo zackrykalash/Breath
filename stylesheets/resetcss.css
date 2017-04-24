@@ -1,0 +1,220 @@
+.resetThis address,
+.resetThis article,
+.resetThis aside,
+.resetThis div,
+.resetThis footer,
+.resetThis header,
+.resetThis hgroup,
+.resetThis layer,
+.resetThis main,
+.resetThis nav,
+.resetThis p,
+.resetThis section
+{display:block!important}
+
+.resetThis table>tr,
+.resetThis tbody,
+.resetThis tfoot,
+.resetThis thead
+{vertical-align:middle!important}
+
+.resetThis p
+{-webkit-margin-before:1em!important;-webkit-margin-after:1em!important;-webkit-margin-start:0!important;-webkit-margin-end:0!important}
+
+.resetThis blockquote,
+.resetThis figure
+{-webkit-margin-before:1em!important;-webkit-margin-after:1em!important;-webkit-margin-start:40px!important;-webkit-margin-end:40px!important}
+
+.resetThis marquee
+{display:inline-block!important}
+
+.resetThis blockquote,
+.resetThis figcaption,
+.resetThis figure
+{display:block!important}
+
+.resetThis q
+{display:inline!important}
+
+.resetThis q::beforecontent:open-quote!important}
+
+q::after
+{content:close-quote!important}
+
+.resetThis center
+{display:block!important;text-align:-webkit-center!important}
+
+.resetThis hr
+{display:block!important;-webkit-margin-before:.5em!important;-webkit-margin-after:.5em!important;-webkit-margin-start:auto!important;-webkit-margin-end:auto!important;border-style:inset!important;border-width:1px!important}
+
+.resetThis h1,
+.resetThis h2,
+.resetThis h3,
+.resetThis h4,
+.resetThis h5,
+.resetThis h6
+{display:block!important;-webkit-margin-start:0!important;-webkit-margin-end:0!important;font-weight:700!important}
+
+.resetThis video
+{object-fit:contain!important}
+
+.resetThis h1
+{font-size:2em!important;-webkit-margin-before:.67em!important;-webkit-margin-after:.67em!important}
+
+.resetThis h2
+{font-size:1.5em!important;-webkit-margin-before:.83em!important;-webkit-margin-after:.83em!important}
+
+.resetThis h3
+{font-size:1.17em!important;-webkit-margin-before:1em!important;-webkit-margin-after:1em!important}
+
+.resetThis h4
+{-webkit-margin-before:1.33em!important;-webkit-margin-after:1.33em!important}
+
+.resetThis h5
+{font-size:.83em!important;-webkit-margin-before:1.67em!important;-webkit-margin-after:1.67em!important}
+
+.resetThis h6
+{font-size:.67em!important;-webkit-margin-before:2.33em!important;-webkit-margin-after:2.33em!important}
+
+.resetThis table
+{display:table!important;border-collapse:separate!important;border-spacing:2px!important;border-color:gray!important}
+
+.resetThis tbody,
+.resetThis tfoot,
+.resetThis thead,
+.resetThis tr
+{border-color:inherit!important}
+
+.resetThis thead
+{display:table-header-group!important}
+
+.resetThis tbody
+{display:table-row-group!important}
+
+.resetThis tfoot
+{display:table-footer-group!important}
+
+.resetThis col
+{display:table-column!important}
+
+.resetThis colgroup
+{display:table-column-group!important}
+
+.resetThis tr
+{display:table-row!important;vertical-align:inherit!important}
+
+.resetThis td,
+.resetThis th
+{display:table-cell!important;vertical-align:inherit!important}
+
+.resetThis th
+{font-weight:700!important}
+
+.resetThis caption
+{display:table-caption!important;text-align:-webkit-center!important}
+
+.resetThis dir,
+.resetThis menu,
+.resetThis ol,
+.resetThis ul
+{display:block!important;-webkit-margin-start:0!important;-webkit-padding-start:40px!important;-webkit-margin-before:1em!important;-webkit-margin-after:1em!important;-webkit-margin-end:0!important}
+
+.resetThis dir,
+.resetThis menu,
+.resetThis ul
+{list-style-type:disc!important}
+
+.resetThis ol
+{list-style-type:decimal!important}
+
+.resetThis li
+{display:list-item!important;text-align:-webkit-match-parent!important;list-style:inherit!important}
+
+.resetThis dd,
+.resetThis dl,
+.resetThis dt
+{display:block!important}
+
+.resetThis ol ul,
+.resetThis ul ul
+{list-style-type:circle!important}
+
+.resetThis ol ol ul,
+.resetThis ol ul ul,
+.resetThis ul ol ul,
+.resetThis ul ul ul
+{list-style-type:square!important}
+
+.resetThis dd
+{-webkit-margin-start:40px!important}
+
+.resetThis dl
+{-webkit-margin-before:1em!important;-webkit-margin-after:1em!important;-webkit-margin-start:0!important;-webkit-margin-end:0!important}
+
+.resetThis ol ol,
+.resetThis ol ul,
+.resetThis ul ol,
+.resetThis ul ul
+{-webkit-margin-before:0!important;-webkit-margin-after:0!important}
+
+.resetThis label
+{cursor:default!important}
+
+.resetThis ins,
+.resetThis u
+{text-decoration:underline!important}
+
+.resetThis b,
+.resetThis strong
+{font-weight:700!important}
+
+.resetThis address,
+.resetThis cite,
+.resetThis dfn,
+.resetThis em,
+.resetThis i,
+.resetThis var
+{font-style:italic!important}
+
+.resetThis code,
+.resetThis kbd,
+.resetThis samp,
+.resetThis tt
+{font-family:monospace!important}
+
+.resetThis listing,
+.resetThis plaintext,
+.resetThis pre,
+.resetThis xmp
+{display:block!important;font-family:monospace!important;white-space:pre!important;margin:1em 0!important}
+
+.resetThis mark
+{background-color:#ff0!important;color:#000!important}
+
+.resetThis big
+{font-size:larger!important}
+
+.resetThis small,
+.resetThis sub,
+.resetThis sup
+{font-size:smaller!important}
+
+.resetThis del,
+.resetThis s,
+.resetThis strike
+{text-decoration:line-through!important}
+
+.resetThis sub
+{vertical-align:sub!important}
+
+.resetThis sup
+{vertical-align:super!important}
+
+.resetThis nobr
+{white-space:nowrap!important}
+
+.resetThis a:any-link
+{color:-webkit-link!important;text-decoration:underline!important;cursor:auto!important}
+
+.resetThis a:any-link:active
+{color:-webkit-activelink!important}

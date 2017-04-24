@@ -1,0 +1,18 @@
+<div class="form-group form-group-lg {{zclass}}" ng-class="{'col-md-12': !(zclass)}">
+    <div class="row">
+        <ul class="col-xs-8 col-sm-8 col-md-8">
+            <li class="display-inlineblock chips-item" ng-repeat="arrayitem in zarraymodel track by $index">
+                <p class="display-inlineblock wordbreakall" ng-bind="arrayitem"></p>
+                <a class="closebtn pull-right text-danger display-inlineblock" ng-click="remove(arrayitem, $index)">&times;</a>
+            </li>
+        </ul>
+
+        <div class="form-group form-group-lg label-floating col-xs-4 col-sm-4 col-md-4" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+            <label for="{{zid}}" class="control-label {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zlabel)"></label><i class="fa fa-plus fa-pull-right fa-2x cursor-pointer {{ztextclass}}" aria-hidden="true" ng-show="zinputmodel.length > 0" ng-click="add(zinputmodel)"></i>
+            <input required type="text" name="{{zname}}" class="form-control {{ztextclass}}" id="{{zid}}" ng-model="zinputmodel" data-ng-click="zonClick()" ng-change="zonchange()" ng-keyup="onKeyUp(zinputmodel)">
+            <span class="help-block {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zhelp)"></span>
+        </div>
+
+        <!--<a type="button" ng-class="{'disabled' : !(zinputmodel.length > 0)}" class="btn-link col-xs-4 col-sm-4 col-md-4" ng-click="add(zinputmodel)" role="button" ng-bind-html="zbtntitle"></a>-->
+    </div>
+</div>

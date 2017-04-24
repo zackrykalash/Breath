@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <form class="col-md-12 usersadd percntage-form remove-input-padding" id="usersadd" method="post" enctype="multipart/form-data">
+
+                <zackry-panel paneltitle="Add Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <zackry-form-group-input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" ztype="text" zname="title" zid="title" zlabel="Title" zhelp="Title" zmodel="$root.Shipment.TempItem.Title"></zackry-form-group-input>
+                    <zackry-form-group-input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" ztype="text" zname="tracknumber" zid="tracknumber" zlabel="Track Number" zhelp="Track Number" zmodel="$root.Shipment.TempItem.Number"></zackry-form-group-input>
+                    <zackry-form-group-input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" ztype="text" zname="url" zid="url" zlabel="URL" zhelp="URL" zmodel="$root.Shipment.TempItem.URL"></zackry-form-group-input>
+                </zackry-panel>
+
+                <zackry-panel paneltitle="Date Expected" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <zackry-form-group-input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zshow="(!$root.Utils.ToBool($root.Shipment.TempItem.KnowDateExpected))" ztype="date" zname="dateexpected" zid="dateexpected" zlabel="Date Expected" zhelp="Date Expected" zmodel="$root.Shipment.TempItem.DateExpected"></zackry-form-group-input>
+                    <zackry-form-group-input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" zshow="($root.Utils.ToBool($root.Shipment.TempItem.KnowDateExpected))" ztype="text" zname="daysnumber" zid="daysnumber" zlabel="Days Number" zhelp="Days Number" zmodel="$root.Shipment.TempItem.DaysNumber"></zackry-form-group-input>
+                    <zackry-form-group-select ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" zname="expecteddate" zid="expecteddate" zlabel="Expected Date" zhelp="Expected Date" zchoices="$root.Shipment.Select.ExpectedDateSelect" zmodel="$root.Shipment.TempItem.KnowDateExpected"></zackry-form-group-select>
+                    <zackry-form-group-input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" ztype="text" zname="daystodeliver" zid="daystodeliver" zlabel="Days To Deliver" zhelp="Days To Deliver" zmodel="$root.Shipment.TempItem.DaysToDeliver"></zackry-form-group-input>
+                </zackry-panel>
+
+                <zackry-panel paneltitle="Details" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <zackry-form-group-select ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" zname="shipped" zid="shipped" zlabel="Shipped" zhelp="Shipped" zchoices="$root.Shipment.Select.YesNo" zmodel="$root.Shipment.TempItem.Shipped"></zackry-form-group-select>
+                    <zackry-form-group-select ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-4" zname="recieved" zid="recieved" zlabel="Recieved" zhelp="Recieved" zchoices="$root.Shipment.Select.YesNo" zmodel="$root.Shipment.TempItem.Recieved"></zackry-form-group-select>
+                </zackry-panel>
+
+                <zackry-panel paneltitle="Picture" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <zackry-form-group-input-file zclass="col-md-4" ztextclass="{{$root.Colors.Text}}" zisempty="true" ztype="text" zname="picture" zid="picture" zlabel="Picture" zhelp="Picture" zmodel="$root.Shipment.TempItem.Picture" zmaxsize="5242880" zaccept="image/*"></zackry-form-group-input-file>
+                </zackry-panel>
+
+
+
+                <zackry-panel paneltitle="Submit" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <zackry-buttons zdisabled="($root.Shipment.IsShipmentEmpty())" zclass="col-md-4" zisempty="false" zisfocused="false" zid="additem" zname="additem" zlabel="Add Item" zhelp="Add Item" ztype="btn-success" zonclick="$root.Shipment.Save()"></zackry-buttons>
+                        </div>
+                    </div>
+                </zackry-panel>
+            </form>
+        </div>
+    </div>
+</div>

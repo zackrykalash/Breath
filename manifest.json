@@ -1,0 +1,63 @@
+{
+  "manifest_version": 2,
+
+  "name": "Breath Angular Tab",
+  "short_name": "Breath",
+  "description": "Breath is an extension, your personal content management system. if you have more ideas you want send them to breathnewtab@gmail.com",
+  "author": "Zackry, if you have more ideas send them to breathnewtab@gmail.com",
+
+  "version": "1.0.10",
+
+  "permissions": [
+    "tabs" 
+    ,"browsingData" 
+    ,"history" 
+    ,"storage" 
+    ,"notifications" 
+    ,"cookies" 
+    ,"background" 
+    ,"identity" 
+    ,"unlimitedStorage" 
+    ,"idle" 
+    ,"alarms" 
+    ,"file://*/*" 
+    ,"chrome://*/*" 
+    ,"http://www.youtube.com" 
+    ,"http://www.youtube.com/*" 
+    ,"https://www.youtube.com" 
+    ,"https://www.youtube.com/*" 
+    ,"http://youtube.com" 
+    ,"http://youtube.com/*" 
+    ,"https://youtube.com" 
+    ,"https://youtube.com/*" 
+    ,"http://youtu.be" 
+    ,"http://youtu.be" 
+    ,"https://youtu.be" 
+    ,"https://youtu.be/*" 
+    ,"https://ytimg.com/*" 
+    ,"https://ytimg.com" 
+    ,"https://s.ytimg.com/*" 
+    ,"https://s.ytimg.com" 
+    ,"http://www.17track.net/" 
+    ,"http://www.17track.net/*" 
+    ,"https://www.17track.net/" 
+    ,"https://www.17track.net/*" 
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+   "background": {
+    "scripts": [ "background.js" ]
+  },
+  "icons": {
+    "48": "images/icon_48.png",
+    "128": "images/icon_128.png",
+    "256": "images/icon_256.png"
+  },
+  "content_scripts": [
+    {
+      "js": [ "./js/thirdpartyangularjs/youtubeiframe.js", "./js/thirdpartyangularjs/angular-youtube-embed.min.js", "./js/thirdpartyangularjs/www-widgetapi.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+    }
+  ]
+}

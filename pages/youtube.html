@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row" ng-if="$root.Youtube.Videos.length > 0">
+            <zackry_panel paneltitle="Youtube Videos" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <div class="block margin5pxauto textalignCenter width50" ng-repeat="video in $root.Youtube.Videos track by $index">
+                    <div class="block margin5pxauto textalignCenter">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <youtube-video video-id="video.Value" class="embed-responsive-item" player-vars="$root.Youtube.PlayerVars" player-width="$root.Youtube.Size.Width" player-height="$root.Youtube.Size.Height"></youtube-video>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12"><h1 ng-bind-html="$root.Utils.SCE(video.Title + ' <span class=\'badge\'>https://youtu.be/' + video.Value + '</span>')" class="{{$root.Colors.Text}} pull-left"></h1></div>
+                            <div class="col-md-12 col-sm-12 col-xs-12"><h3 class="{{$root.Colors.Text}} pull-left"><a ng-href="{{'https://youtu.be/' + video.Value}}" target="_blank" class="{{$root.Colors.Text}}" ng-bind-html="$root.Utils.SCE('See video in youtube: https://youtu.be/' + video.Value + ' <i class=\'fa fa-external-link\' aria-hidden=\'true\'></i>')"></a></h3></div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <zackry-buttons zclass="col-md-12" zisempty="false" zisfocused="false" zid="{{'remove' + video.Value}}" zname="{{'remove' + video.Value}}" zlabel="Remove video" zhelp="Remove video" ztype="btn-danger" zonclick="$root.Youtube.Remove(video)"></zackry-buttons>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </zackry_panel>
+        </div>
+    </div>
+</div>
