@@ -244,3 +244,8 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /.idea/workspace.xml
+/.idea/.name
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/deployment.xml
+/.idea/www.iml
