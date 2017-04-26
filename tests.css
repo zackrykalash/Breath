@@ -1,4 +1,6 @@
-       $rootScope.replace = function (link) {
+   
+gui   
+        $rootScope.replace = function (link) {
             var str = [".red-50{background:#ffebee;}"
                 , ".red-100{background:#ffcdd2;}"
                 , ".red-200{background:#ef9a9a;}"
