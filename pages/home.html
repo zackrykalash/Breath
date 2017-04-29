@@ -6,10 +6,21 @@
             <zackry_panel paneltitle="My Links" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                 <div class="row">
                     <div class="col-md-12">
-                        <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-3" ztype="text" zname="filterlinks" zid="filterlinks" zlabel="Filter your links:" zhelp="Filter your links" zmodel="linkSearch"></zackry_form_group_input>
+                        <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-3" ztype="text" zname="filterlinks" zid="filterlinks" zlabel="Filter your links:" zmodel="linkSearch"></zackry_form_group_input>
                         <zackry-buttons zclass="col-md-3 col-sm-6 col-xs-6" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="Refresh Links <i class='fa fa-refresh' aria-hidden='true'></i>" zname="refreshlinks" ztype="btn-default" zonclick="$root.RefreshData()"></zackry-buttons>
-                        <!--<zackry-buttons zclass="col-md-3" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="replace" zname="replace" ztype="btn-default" zhelp="replace" zonclick="$root.replace()" ></zackry-buttons>-->
-                        <zackry-form-group-toggle zchecked="($root.Links.SecretVisibility)" zclass="col-md-3 col-sm-3 col-xs-3" ztextoff="No" ztexton="Yes" ztype="toggle--push toggle--push--glow" zname="secretvisibility" zid="secretvisibility" zhelp="Toggle this" zonclick="$root.Links.TuggleSecretVisibility()" zicon="fa-user-secret"></zackry-form-group-toggle>
+                        <!--<zackry-buttons zclass="col-md-3" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="replace" zname="replace" ztype="btn-default"   zonclick="$root.replace()" ></zackry-buttons>-->
+                        <zackry-form-group-toggle zchecked="($root.Links.SecretVisibility)" zclass="col-md-1 col-sm-3 col-xs-3" ztextoff="No" ztexton="Yes" ztype="toggle--push toggle--push--glow" zname="secretvisibility" zid="secretvisibility" zonclick="$root.Links.TuggleSecretVisibility()" zicon="fa-user-secret"></zackry-form-group-toggle>
+                    
+                        <div class="simple-icon-button-contaier col-md-3 col-sm-3 col-xs-3">
+                            <div class="simple-icon-button-group">
+                                <a ng-click="$root.HeaderButtons.MergeWindows()" title="Merge Windows" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-compress"></i></a>
+                                <!--<a ng-click="$root.DownloadManager.Search()" title="Download Manager" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-download"></i></a>-->
+                             </div>
+                            <zackry-clear-floats></zackry-clear-floats>
+                        </div>
+                    
+                         
+
                     </div>
                 </div>
 
@@ -26,6 +37,40 @@
                     </div>
                 </div>
             </zackry_panel>
+
+            <zackry-clear-floats></zackry-clear-floats>
+            <hr class="form-horizontal" />
+
+
+            <zackry_panel paneltitle="My Apps" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-xs-2 height150px {{$root.Colors.Text}}" ng-repeat="app in $root.ChromeApps.AppList" title="{{app.Description}}">
+                                <div class="app-list-group">
+                                    <div class="app-list-group-item" ng-click="$root.ChromeApps.LaunchApp(app.Id)">
+                                        <div class="app-row-picture">
+                                            <img class="circle" src="{{app.Icons}}" alt="icon">
+                                        </div>
+                                        <div class="app-row-content">
+                                            <h4 class="list-group-item-heading {{$root.Colors.Text}}">{{app.Name}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </zackry_panel>
+
+
+            <zackry-clear-floats></zackry-clear-floats>
+            <hr class="form-horizontal" />
+
+
+
         </div>
     </div>
 </div>

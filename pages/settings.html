@@ -6,8 +6,8 @@
             <form>
                 <zackry-panel paneltitle="Reset Data" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <div class="row">
-                        <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#resetalldata" zclass="col-md-8" zisempty="false" zisfocused="false" zlabel="Reset All Data (without Links, Your links will not be deleted)" zhelp="Reset All Data (without Links, Your links will not be deleted)" ztype="btn-danger"></zackry-modal-buttons>
-                        <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#deleteallliinks" zclass="col-md-4" zisempty="false" zisfocused="false" zlabel="Delete All Links" zhelp="Delete All Links" ztype="btn-danger"></zackry-modal-buttons>
+                        <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#resetalldata" zclass="col-md-8" zisempty="false" zisfocused="false" zlabel="Reset All Data (without Links, Your links will not be deleted)"   ztype="btn-danger"></zackry-modal-buttons>
+                        <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#deleteallliinks" zclass="col-md-4" zisempty="false" zisfocused="false" zlabel="Delete All Links"   ztype="btn-danger"></zackry-modal-buttons>
                     </div>
                     <zackry-modals modalid="deleteallliinks" modaltitle="Delete All Links" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                         <p class="text-danger">Are you sure you want to delete all links?</p>
@@ -28,59 +28,63 @@
 
             <form>
                 <zackry-panel paneltitle="User Info" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
-                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="firstName" zid="firstName" zlabel="First Name" zhelp="First Name" zmodel="$root.Settings.Settings.User.FirstName"></zackry-form-group-input>
-                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="lastName" zid="lastName" zlabel="Last Name" zhelp="Last Name" zmodel="$root.Settings.Settings.User.LastName"></zackry-form-group-input>
-                    <zackry-datepicker zformat="dd, MMM yyyy" ztextclass="{{$root.Colors.Text}}" zoptions="$root.Settings.Options" zisempty="true" zclass="col-md-4" ztype="text" zname="dateofbirth" zid="dateofbirth" zlabel="Date Of Birth" zhelp="Date Of Birth" zmodel="$root.Settings.Settings.User.DateOfBirth"></zackry-datepicker>
-                    <zackry-form-group-input-file zclass="col-md-4" ztextclass="{{$root.Colors.Text}}" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image" zhelp="Image" zmodel="$root.Settings.Settings.User.Image" zmaxsize="5242880" zaccept="image/*"></zackry-form-group-input-file>
-                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updateuserinfo" zname="updateuserinfo" zlabel="Update User Info" zhelp="Update User Info" ztype="btn-primary" zonclick="$root.Settings.SaveUser()"></zackry-buttons>
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="firstName" zid="firstName" zlabel="First Name"   zmodel="$root.Settings.Settings.User.FirstName"></zackry-form-group-input>
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="lastName" zid="lastName" zlabel="Last Name"   zmodel="$root.Settings.Settings.User.LastName"></zackry-form-group-input>
+                    <zackry-datepicker zformat="dd, MMM yyyy" ztextclass="{{$root.Colors.Text}}" zoptions="$root.Settings.Options" zisempty="true" zclass="col-md-4" ztype="text" zname="dateofbirth" zid="dateofbirth" zlabel="Date Of Birth"   zmodel="$root.Settings.Settings.User.DateOfBirth"></zackry-datepicker>
+                    <zackry-form-group-input-file zclass="col-md-4" ztextclass="{{$root.Colors.Text}}" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image"   zmodel="$root.Settings.Settings.User.Image" zmaxsize="5242880" zaccept="image/*"></zackry-form-group-input-file>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updateuserinfo" zname="updateuserinfo" zlabel="Update User Info"   ztype="btn-primary" zonclick="$root.Settings.SaveUser()"></zackry-buttons>
                 </zackry-panel>
             </form>
 
             <form>
                 <zackry-panel paneltitle="Add Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <!--## ClearData ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="cleardata" zid="cleardata" zlabel="Clear Data" zhelp="Clear Data" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.ClearData"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="cleardata" zid="cleardata" zlabel="Clear Data"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.ClearData"></zackry-form-group-select>
                     <!--## Backgrounds ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="backgrounds" zid="backgrounds" zlabel="Backgrounds" zhelp="Backgrounds" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Backgrounds"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="backgrounds" zid="backgrounds" zlabel="Backgrounds"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Backgrounds"></zackry-form-group-select>
                     <!--## Local ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="local" zid="local" zlabel="Local" zhelp="Local" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Local"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="local" zid="local" zlabel="Local"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Local"></zackry-form-group-select>
                     <!--## LiveEdit ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="liveedit" zid="liveedit" zlabel="Live Edit" zhelp="Live Edit" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.LiveEdit"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="liveedit" zid="liveedit" zlabel="Live Edit"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.LiveEdit"></zackry-form-group-select>   
+                    <!--## InsertCSS ##-->
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="insertcss" zid="insertcss" zlabel="Insert CSS"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.InsertCSS"></zackry-form-group-select>
                     <!--## Shipment ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="shipment" zid="shipment" zlabel="Shipment" zhelp="Shipment" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Shipment"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="shipment" zid="shipment" zlabel="Shipment"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Shipment"></zackry-form-group-select>
                     <!--## Colors ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="colors" zid="colors" zlabel="Colors" zhelp="Colors" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Colors"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="colors" zid="colors" zlabel="Colors"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Colors"></zackry-form-group-select>
                     <!--## Youtube ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="youtube" zid="youtube" zlabel="Youtube" zhelp="Youtube" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Youtube"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="youtube" zid="youtube" zlabel="Youtube"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Youtube"></zackry-form-group-select>
                     <!--## WelcomeScreen ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="welcomescreen" zid="welcomescreen" zlabel="Welcome Screen" zhelp="Welcome Screen" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.WelcomeScreen"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="welcomescreen" zid="welcomescreen" zlabel="Welcome Screen" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.WelcomeScreen"></zackry-form-group-select>
                     <!--## Footer ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="footer" zid="footer" zlabel="Footer" zhelp="Footer" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Footer"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="footer" zid="footer" zlabel="Footer" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Footer"></zackry-form-group-select>
+                    <!--## AppList ##-->
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="applist" zid="applist" zlabel="App List" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.AppList"></zackry-form-group-select>
                     <!--## ChromeLinks ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="chromelinks" zid="chromelinks" zlabel="Chrome Links" zhelp="Chrome Links" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.ChromeLinks"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="chromelinks" zid="chromelinks" zlabel="Chrome Links" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.ChromeLinks"></zackry-form-group-select>
                     <!--## FooterFavorites ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="footerfavorites" zid="footerfavorites" zlabel="Footer Favorites" zhelp="Footer Favorites" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.FooterFavorites"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="footerfavorites" zid="footerfavorites" zlabel="Footer Favorites" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.FooterFavorites"></zackry-form-group-select>
                     <!--## NavType ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="navtype" zid="navtype" zlabel="Nav Type" zhelp="Nav Type" zchoices="$root.Settings.Select.NavType" zmodel="$root.Settings.Settings.Visibility.NavType"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="navtype" zid="navtype" zlabel="Nav Type"   zchoices="$root.Settings.Select.NavType" zmodel="$root.Settings.Settings.Visibility.NavType"></zackry-form-group-select>
                     <!--## LinksSize ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizeextrasmall" zid="linkssizeextrasmall" zlabel="Links Size xs" zhelp="Links Size xs" zchoices="$root.Settings.Select.SizesXS" zmodel="$root.Settings.Settings.Visibility.LinksSizeExtraSmall"></zackry-form-group-select>
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizesmall" zid="linkssizesmall" zlabel="Links Size sm" zhelp="Links Size sm" zchoices="$root.Settings.Select.SizesSM" zmodel="$root.Settings.Settings.Visibility.LinksSizeSmall"></zackry-form-group-select>
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizemedium" zid="linkssizemedium" zlabel="Links Size md" zhelp="Links Size md" zchoices="$root.Settings.Select.SizesMD" zmodel="$root.Settings.Settings.Visibility.LinksSizeMedium"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizeextrasmall" zid="linkssizeextrasmall" zlabel="Links Size xs"   zchoices="$root.Settings.Select.SizesXS" zmodel="$root.Settings.Settings.Visibility.LinksSizeExtraSmall"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizesmall" zid="linkssizesmall" zlabel="Links Size sm"   zchoices="$root.Settings.Select.SizesSM" zmodel="$root.Settings.Settings.Visibility.LinksSizeSmall"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizemedium" zid="linkssizemedium" zlabel="Links Size md"   zchoices="$root.Settings.Select.SizesMD" zmodel="$root.Settings.Settings.Visibility.LinksSizeMedium"></zackry-form-group-select>
 
-                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="number" zname="welcomepagetimer" zid="welcomepagetimer" zlabel="Welcome page timer in seconds" zhelp="Welcome page timer in seconds" zmodel="$root.Settings.Settings.Visibility.WelcomePageTimer"></zackry-form-group-input>
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="number" zname="welcomepagetimer" zid="welcomepagetimer" zlabel="Welcome page timer in seconds"   zmodel="$root.Settings.Settings.Visibility.WelcomePageTimer"></zackry-form-group-input>
 
-                    <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#savevisibilitysettings" zclass="col-md-4" zisempty="false" zisfocused="false" zlabel="Save Visibility Settings" zhelp="Save Visibility Settings" ztype="btn-primary"></zackry-modal-buttons>
+                    <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#savevisibilitysettings" zclass="col-md-4" zisempty="false" zisfocused="false" zlabel="Save Visibility Settings"   ztype="btn-primary"></zackry-modal-buttons>
                     <zackry-modals modalid="savevisibilitysettings" modaltitle="Save Visibility Settings" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                         <p class="text-danger">Saving visibility settings will delete data of of the hidden apps.</p>
-                        <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatevisibility" zname="updatevisibility" zlabel="Update Visibility" zhelp="Update Visibility" ztype="btn-primary" zonclick="$root.Settings.SaveVisibility()" zdatadismiss="modal"></zackry-buttons>
+                        <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatevisibility" zname="updatevisibility" zlabel="Update Visibility"   ztype="btn-primary" zonclick="$root.Settings.SaveVisibility()" zdatadismiss="modal"></zackry-buttons>
                     </zackry-modals>
-                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="restoredefaults" zname="restoredefaults" zlabel="Restore Defaults" zhelp="Restore Defaults" ztype="btn-default" zonclick="$root.Settings.ToDefaultVisibility()"></zackry-buttons>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="restoredefaults" zname="restoredefaults" zlabel="Restore Defaults"   ztype="btn-default" zonclick="$root.Settings.ToDefaultVisibility()"></zackry-buttons>
                 </zackry-panel>
             </form>
 
             <!--<form>
                 <zackry-panel paneltitle="Add Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
-                    <zackry-form-group-input ng-repeat="(key, value) in $root.Settings.Settings.Visibility"  zisempty="true" zclass="col-md-4" zname="{{key}}" zid="{{key}}" zlabel="{{key}}" zhelp="{{key}}"  zmodel="$root.Settings.Settings.Visibility[key]"></zackry-form-group-input>
+                    <zackry-form-group-input ng-repeat="(key, value) in $root.Settings.Settings.Visibility"  zisempty="true" zclass="col-md-4" zname="{{key}}" zid="{{key}}" zlabel="{{key}}"    zmodel="$root.Settings.Settings.Visibility[key]"></zackry-form-group-input>
                 </zackry-panel>
             </form>-->
 
@@ -91,13 +95,13 @@
 
             <form>
                 <zackry-panel paneltitle="Update Passwords Details" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
-                    <!--<zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="oldpassword" zid="oldpassword" zlabel="Old Password" zhelp="Old Password" zmodel="$root.Password.Passwords.OldPassword"></zackry-form-group-input>-->
-                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="password" zid="password" zlabel="Password" zhelp="Password" zmodel="$root.Password.Passwords.Password"></zackry-form-group-input>
-                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="repeatpassword" zid="repeatpassword" zlabel="Repeat Password" zhelp="Repeat Password" zmodel="$root.Password.Passwords.RepeatPassword"></zackry-form-group-input>
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="lockonload" zid="lockonload" zlabel="Lock On Load" zhelp="Lock On Load" zchoices="$root.Password.Select.TrueFalse" zmodel="$root.Password.Passwords.LockOnLoad"></zackry-form-group-select>
+                    <!--<zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="oldpassword" zid="oldpassword" zlabel="Old Password"   zmodel="$root.Password.Passwords.OldPassword"></zackry-form-group-input>-->
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="password" zid="password" zlabel="Password"   zmodel="$root.Password.Passwords.Password"></zackry-form-group-input>
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="repeatpassword" zid="repeatpassword" zlabel="Repeat Password"   zmodel="$root.Password.Passwords.RepeatPassword"></zackry-form-group-input>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="lockonload" zid="lockonload" zlabel="Lock On Load"   zchoices="$root.Password.Select.TrueFalse" zmodel="$root.Password.Passwords.LockOnLoad"></zackry-form-group-select>
 
                     
-                    <zackry-buttons zdisabled="$root.Password.NotValidPassword()" zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatepasswordsdetails" zname="updatepasswordsdetails" zlabel="Update Passwords Details" zhelp="Update Passwords Details" ztype="btn-default" zonclick="$root.Password.Save()"></zackry-buttons>
+                    <zackry-buttons zdisabled="$root.Password.NotValidPassword()" zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatepasswordsdetails" zname="updatepasswordsdetails" zlabel="Update Passwords Details"   ztype="btn-default" zonclick="$root.Password.Save()"></zackry-buttons>
 
    
                 </zackry-panel>

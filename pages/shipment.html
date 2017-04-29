@@ -25,7 +25,7 @@
                         <h4 data-ng-click="$root.Shipment.TuggleShipped(item)" class="cursor-pointer"><span ng-if="(item.Shipped == false)" class="text-danger">Not shipped</span><span ng-if="(item.Shipped == true)" class="text-success">Shipped</span></h4>
                         <hr>
                         <h4 ng-if="item.Number">
-                            <zackry-buttons zclass="col-md-12" zisempty="false" zisfocused="false" zid="track" zname="track" zlabel="Track" zhelp="Track" ztype="btn-info" zonclick="$root.Shipment.DoTrack(item.Number)"></zackry-buttons>
+                            <zackry-buttons zclass="col-md-12" zisempty="false" zisfocused="false" zid="track" zname="track" zlabel="Track"   ztype="btn-info" zonclick="$root.Shipment.DoTrack(item.Number)"></zackry-buttons>
                             <div id="YQContainer"></div>
                         </h4>
                         <div class="icons">
@@ -37,7 +37,7 @@
                 <!-- Items Modal -->
                 <zackry-modals modalid="deleteitem" modaltitle="Delete Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <p class="text-danger">Are you sure you want to delete this item?</p>
-                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="yes" zname="yes" zlabel="Yes" zhelp="Yes" ztype="btn-danger" zdatadismiss="deleteitem" zonclick="$root.Shipment.RemoveItem()"></zackry-buttons>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="yes" zname="yes" zlabel="Yes"   ztype="btn-danger" zdatadismiss="deleteitem" zonclick="$root.Shipment.RemoveItem()"></zackry-buttons>
                 </zackry-modals>
             </zackry_panel>
         </div>

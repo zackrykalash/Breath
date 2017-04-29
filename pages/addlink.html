@@ -5,10 +5,10 @@
 
             <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                 <form class="col-md-12 usersadd percntage_form remove_input_padding" enctype="multipart/form-data">
-                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="text" zname="title" zid="title" zlabel="Title" zhelp="Title" zmodel="$root.Links.Link.Title"></zackry_form_group_input>
-                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="url" zname="url" zid="url" zlabel="URL" zhelp="URL" zmodel="$root.Links.Link.URL"></zackry_form_group_input>
-                    <!--<zackry_form_group_input zclass="col-md-4" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image (URL or Local Path)" zhelp="Image (URL or Local Path)" zmodel="$root.Links.Link.Image"></zackry_form_group_input>-->
-                    <zackry_form_group_input_file ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image" zhelp="Image" zmodel="$root.Links.Link.Image" zmaxsize="5242880" zaccept="image/*"></zackry_form_group_input_file>
+                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="text" zname="title" zid="title" zlabel="Title"   zmodel="$root.Links.Link.Title"></zackry_form_group_input>
+                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="url" zname="url" zid="url" zlabel="URL"   zmodel="$root.Links.Link.URL"></zackry_form_group_input>
+                    <!--<zackry_form_group_input zclass="col-md-4" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image (URL or Local Path)"   zmodel="$root.Links.Link.Image"></zackry_form_group_input>-->
+                    <zackry_form_group_input_file ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zisempty="true" ztype="text" zname="image" zid="image" zlabel="Image"   zmodel="$root.Links.Link.Image" zmaxsize="5242880" zaccept="image/*"></zackry_form_group_input_file>
 
                     <div class="row" ng-if="($root.Links.IsLinkFilled())">
                         <div class="col-md-4">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <zackry-buttons zdisabled="($root.Links.IsLinkEmpty())" zclass="col-md-4" zisempty="false" zisfocused="false" zid="addlink" zname="addlink" zlabel="Add Link" zhelp="Add Link" ztype="btn-default" zonclick="$root.Links.Save()"></zackry-buttons>
+                            <zackry-buttons zdisabled="($root.Links.IsLinkEmpty())" zclass="col-md-4" zisempty="false" zisfocused="false" zid="addlink" zname="addlink" zlabel="Add Link"   ztype="btn-default" zonclick="$root.Links.Save()"></zackry-buttons>
                             <div ng-include="'/pages/deletealllinks.html'"></div>
                          </div>
                     </div>

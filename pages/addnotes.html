@@ -6,13 +6,13 @@
             <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                 <form class="col-md-12 usersadd percntage_form remove_input_padding" enctype="multipart/form-data">
 
-                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="title" zid="title" zlabel="Title" zhelp="Title" zmodel="$root.Notes.Note.Title"></zackry-form-group-input>
+                    <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="title" zid="title" zlabel="Title"   zmodel="$root.Notes.Note.Title"></zackry-form-group-input>
 
-                    <zackry-text-editor zmodel="$root.Notes.Note.Value" zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-12" zname="note" zid="note" zlabel="Note" zhelp="Note"></zackry-text-editor>
+                    <zackry-text-editor zmodel="$root.Notes.Note.Value" zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-12" zname="note" zid="note" zlabel="Note"  ></zackry-text-editor>
 
-                    <zackry-date-time-picker zmodel="$root.Notes.Note.Date" ztextclass="{{$root.Colors.Text}}" zisfocused="true" zisempty="true" zclass="col-md-4" ztype="text" ztuggleid="datetimetuggle" ztugglename="datetimetuggle" zname="datetime" zid="datetime" zlabel="Date Time" zhelp="Date Time"></zackry-date-time-picker>
+                    <zackry-date-time-picker zmodel="$root.Notes.Note.Date" ztextclass="{{$root.Colors.Text}}" zisfocused="true" zisempty="true" zclass="col-md-4" ztype="text" ztuggleid="datetimetuggle" ztugglename="datetimetuggle" zname="datetime" zid="datetime" zlabel="Date Time"  ></zackry-date-time-picker>
 
-                    <zackry-chipds-input zarraymodel="$root.Notes.Note.Tags" zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-8" zname="tags" zid="tags" zlabel="Tags" zhelp="Tags"></zackry-chipds-input>
+                    <zackry-chipds-input zarraymodel="$root.Notes.Note.Tags" zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-8" zname="tags" zid="tags" zlabel="Tags"  ></zackry-chipds-input>
 
                 </form>
             </zackry_panel>
@@ -34,7 +34,7 @@
                 </div>
 
 
-                <zackry-buttons zonclick="$root.Notes.Save()" zdisabled="$root.Notes.NotValid()" zclass="col-md-4" zisempty="false" zisfocused="false" zid="save" zname="save" zlabel="Save" zhelp="Save" ztype="btn-default"></zackry-buttons>
+                <zackry-buttons zonclick="$root.Notes.Save()" zdisabled="$root.Notes.NotValid()" zclass="col-md-4" zisempty="false" zisfocused="false" zid="save" zname="save" zlabel="Save"   ztype="btn-default"></zackry-buttons>
 
             </zackry_panel>
 

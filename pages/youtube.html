@@ -12,7 +12,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12"><h1 ng-bind-html="$root.Utils.SCE(video.Title + ' <span class=\'badge\'>https://youtu.be/' + video.Value + '</span>')" class="{{$root.Colors.Text}} pull-left"></h1></div>
                             <div class="col-md-12 col-sm-12 col-xs-12"><h3 class="{{$root.Colors.Text}} pull-left"><a ng-href="{{'https://youtu.be/' + video.Value}}" target="_blank" class="{{$root.Colors.Text}}" ng-bind-html="$root.Utils.SCE('See video in youtube: https://youtu.be/' + video.Value + ' <i class=\'fa fa-external-link\' aria-hidden=\'true\'></i>')"></a></h3></div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <zackry-buttons zclass="col-md-12" zisempty="false" zisfocused="false" zid="{{'remove' + video.Value}}" zname="{{'remove' + video.Value}}" zlabel="Remove video" zhelp="Remove video" ztype="btn-danger" zonclick="$root.Youtube.Remove(video)"></zackry-buttons>
+                                <zackry-buttons zclass="col-md-12" zisempty="false" zisfocused="false" zid="{{'remove' + video.Value}}" zname="{{'remove' + video.Value}}" zlabel="Remove video"   ztype="btn-danger" zonclick="$root.Youtube.Remove(video)"></zackry-buttons>
                             </div>
                         </div>
                     </div>

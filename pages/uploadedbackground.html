@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-md-12">
             <form class="remove_input_padding">
-                <zackry_form_group_input_file_multiple ztextclass="{{$root.Colors.Text}}" maxnum="1" zclass="col-md-4" zisempty="true" ztype="text" zname="background" zid="background" zlabel="Upload background images" zhelp="Upload background images" zmodel="$root.Background.Background" zaccept="image/*"></zackry_form_group_input_file_multiple>
+                <zackry_form_group_input_file_multiple ztextclass="{{$root.Colors.Text}}" maxnum="1" zclass="col-md-4" zisempty="true" ztype="text" zname="background" zid="background" zlabel="Upload background images"   zmodel="$root.Background.Background" zaccept="image/*"></zackry_form_group_input_file_multiple>
                 <button ng-disabled="($root.Background.Background == [] || $root.Background.Background.length == 0)" class="btn btn-success fix-btn-height" type="button" ng-click="$root.Background.AddBackground()">
                     Upload images
                     <i class="fa fa-upload"></i>
                 </button>
-                <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#deletealluploadedimages" zclass="col-md-3" zisempty="false" zisfocused="false" zlabel="Delete All" zhelp="Delete All" ztype="btn-danger"></zackry-modal-buttons>
+                <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#deletealluploadedimages" zclass="col-md-3" zisempty="false" zisfocused="false" zlabel="Delete All"   ztype="btn-danger"></zackry-modal-buttons>
                 <!-- links Modal -->
                 <zackry-modals modalid="deletealluploadedimages" modaltitle="Delete All Uploaded Images" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <p class="text-danger">Are you sure you want to delete all Uploaded Images?</p>

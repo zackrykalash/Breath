@@ -30,6 +30,10 @@ appManager
                 url: "/liveedit",
                 templateUrl: "pages/liveedit.html",
             })
+            .state('insertcss', {
+                url: "/insertcss",
+                templateUrl: "pages/insertcss.html",
+            })
             .state('addshipment', {
                 url: "/addshipment",
                 templateUrl: "pages/addshipment.html",

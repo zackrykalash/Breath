@@ -18,18 +18,18 @@
 
             <zackry_panel paneltitle="Selectors">
                 <form class="col-md-12 usersadd percntage_form remove_input_padding" id="usersadd" method="post" enctype="multipart/form-data">
-                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="text" zid="text" zlabel="Text" zhelp="Text" zchoices="$root.Colors.Texts" zmodel="$root.Colors.Text"></zackry_form_group_select>
-                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="background" zid="background" zlabel="Background" zhelp="Background" zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.Background"></zackry_form_group_select>
-                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="opcity" zid="opcity" zlabel="Opcity" zhelp="Opcity" zchoices="$root.Colors.Opacities" zmodel="$root.Colors.Opacity"></zackry_form_group_select>
-                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="bodybackgrounds" zid="bodybackgrounds" zlabel="Body Backgrounds" zhelp="Body Backgrounds" zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.BodyBackgrounds"></zackry_form_group_select>
-                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatecolors" zname="updatecolors" zlabel="Update Colors" zhelp="Update Colors" ztype="btn-primary" zonclick="$root.Colors.Save()"></zackry-buttons>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="text" zid="text" zlabel="Text"   zchoices="$root.Colors.Texts" zmodel="$root.Colors.Text"></zackry_form_group_select>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="background" zid="background" zlabel="Background"   zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.Background"></zackry_form_group_select>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="opcity" zid="opcity" zlabel="Opcity"   zchoices="$root.Colors.Opacities" zmodel="$root.Colors.Opacity"></zackry_form_group_select>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="bodybackgrounds" zid="bodybackgrounds" zlabel="Body Backgrounds"   zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.BodyBackgrounds"></zackry_form_group_select>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatecolors" zname="updatecolors" zlabel="Update Colors"   ztype="btn-primary" zonclick="$root.Colors.Save()"></zackry-buttons>
                   </form>
             </zackry_panel>
 
             <zackry_panel paneltitle="Background Colors">
                 <div class="row">
                     <div class="col-md-12">
-                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filterbackgrounds" zid="filterbackgrounds" zlabel="Filter your backgrounds:" zhelp="Filter your backgrounds" zmodel="backgroundSearch"></zackry_form_group_input>
+                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filterbackgrounds" zid="filterbackgrounds" zlabel="Filter your backgrounds:"   zmodel="backgroundSearch"></zackry_form_group_input>
                     </div>
                 </div>
                 <div class="background-color-container">
@@ -46,7 +46,7 @@
             <zackry_panel paneltitle="Text Colors">
                 <div class="row">
                     <div class="col-md-12">
-                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filtertextcolor" zid="filtertextcolor" zlabel="Filter your text color:" zhelp="Filter your text color:" zmodel="textcolorSearch"></zackry_form_group_input>
+                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filtertextcolor" zid="filtertextcolor" zlabel="Filter your text color:"   zmodel="textcolorSearch"></zackry_form_group_input>
                     </div>
                 </div>
                 <div class="text-color-container">

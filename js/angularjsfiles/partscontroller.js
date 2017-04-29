@@ -1,6 +1,3 @@
-/// <reference path="../../templates/ZackryNotification.html" />
-/// <reference path="../../templates/ZackryNotification.html" />
-/// <reference path="../../templates/ZackryNotification.html" />
 appManager.controller('headController', [
     '$rootScope', '$scope', '$stateParams', '$interval'
     , '$timeout', '$log', 'Notification', '$location'
@@ -57,6 +54,10 @@ appManager.controller('headController', [
                 $rootScope.Settings.GetUser();
                 $rootScope.Password.Get();
                 $rootScope.Notes.Get();
+                //$rootScope.History.Search();
+                $rootScope.ChromeApps.GetApps();
+                $rootScope.DownloadManager.Search();
+                $rootScope.InsertCSS.LoadCss();
                 failSaveInt--;
                 if (failSaveInt <= 0) {
                     $rootScope.Angular.interval.cancel(stopInterval);
@@ -853,7 +854,7 @@ appManager.controller('headController', [
             , GetTime: function (value) {
                 return ((new Date()).getTime() - value);
             }
-            , ClearAll: function (value) {
+            , ClearAll: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0
                 if (value == null) {
@@ -869,10 +870,10 @@ appManager.controller('headController', [
                     "appcache": true, "cache": true, "cookies": true, "downloads": true, "fileSystems": true, "formData": true, "history": true, "indexedDB": true, "localStorage": true, "pluginData": true, "passwords": true, "webSQL": true
                 }, function () {
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearAppcache: function (value) {
+            , ClearAppcache: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -888,10 +889,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "App cache cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearCache: function (value) {
+            , ClearCache: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -907,10 +908,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Cache cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearCookies: function (value) {
+            , ClearCookies: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -926,10 +927,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Cookies cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearDownloads: function (value) {
+            , ClearDownloads: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -944,10 +945,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Downloads cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearFileSystems: function (value) {
+            , ClearFileSystems: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -963,10 +964,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "File Systems cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearFormData: function (value) {
+            , ClearFormData: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -982,10 +983,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Form Data cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearHistory: function (value) {
+            , ClearHistory: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -1001,10 +1002,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "History cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearIndexedDB: function (value) {
+            , ClearIndexedDB: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -1020,10 +1021,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Indexed DB cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearLocalStorage: function (value) {
+            , ClearLocalStorage: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -1039,10 +1040,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Local Storage cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearPluginData: function (value) {
+            , ClearPluginData: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -1058,10 +1059,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Plugin Data cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearPasswords: function (value) {
+            , ClearPasswords: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -1077,10 +1078,10 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "Passwords cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
-            , ClearWebSQL: function (value) {
+            , ClearWebSQL: function (value, dontReload) {
                 $rootScope.Loader.PageLoader.Show();
                 var sinceTime = 0;
                 if (value == null) {
@@ -1096,7 +1097,7 @@ appManager.controller('headController', [
                 }, function () {
                     $rootScope.Notify.Notification(null, "WebSQL cleared.", $rootScope.Notify.NotifyType.Info);
                     $rootScope.Loader.PageLoader.Hide();
-                    chrome.tabs.reload();
+                    if (dontReload == false) { chrome.tabs.reload(); }
                 });
             }
         };
@@ -1609,6 +1610,8 @@ appManager.controller('headController', [
                    , Youtube: "false"
                    , WelcomeScreen: "true"
                    , Footer: "true"
+                   , AppList: "true"
+                   , InsertCSS: "true"
                    , ChromeLinks: "true"
                    , FooterFavorites: "true"
                    , NavType: "navbar-fixed-top"
@@ -1640,6 +1643,8 @@ appManager.controller('headController', [
                    , Youtube: "false"
                    , WelcomeScreen: "true"
                    , Footer: "true"
+                   , AppList: "true"
+                   , InsertCSS: "true"
                    , ChromeLinks: "true"
                    , FooterFavorites: "true"
                    , NavType: "navbar-fixed-top"
@@ -2148,7 +2153,273 @@ appManager.controller('headController', [
             MilitaryTelephone: ngAudio.load("audio/military_telephone.mp3")
         };
         
-     
+        $rootScope.History = {
+            Search: function () {
+                $rootScope.History.Histories = [];
+                var microseconds = 1000 * 60 * 60 * 24 * 7 * 4;
+                var oneWeekAgo = (new Date).getTime() - microseconds;
+                chrome.history.search({ 'text': '', 'startTime': oneWeekAgo }, function (historyItems) {
+                    for (var i = 0; i < historyItems.length; ++i) {
+                        console.log(historyItems[i]);
+                        var url = historyItems[i].url;
+                        var title = historyItems[i].title;
+                        var visitCount = historyItems[i].visitCount;
+                        if (!!url && !!title) {
+                            $rootScope.History.Histories.push({ Title: title, Value: url, VisitCount: visitCount });
+                        }
+                    }
+                });
+            },
+            Histories: [],
+            History: {
+                Title: "",
+                Value: "",
+                VisitCount: ""
+            },
+            HistoryClick: function (value) {
+                chrome.tabs.create({
+                    selected: true,
+                    url: value
+                });
+            }
+        };
+
+
+        $rootScope.ChromeApps = {
+            AppList: []
+            , App: {
+                AppLaunchUrl: ""
+                , AvailableLaunchTypes: []
+                , Description: ""
+                , HomepageUrl: ""
+                , Icons: [
+                          { Size: 16, URL: "" },
+                          { Size: 128, URL: "" }
+                ]
+                , Id: ""
+                , LaunchType: ""
+                , Name: ""
+                , ShortName: ""
+            }
+            , LaunchApp: function (id) {
+                chrome.management.launchApp(id);
+                window.close();
+            }
+            , GetApps: function () {
+                $rootScope.ChromeApps.AppList = [];
+                chrome.management.getAll(function (info) {
+                    for (var i = 0; i < info.length; i++) {
+                        var app = angular.copy(info[i]);
+                        if (app.isApp && app.enabled) {
+                            var tempApp = {
+                                AppLaunchUrl: app.appLaunchUrl
+                                , AvailableLaunchTypes: app.availableLaunchTypes
+                                , Description: app.description
+                                , HomepageUrl: app.homepageUrl
+                                , Icons: ""
+                                , Id: app.id
+                                , LaunchType: app.launchType
+                                , Name: app.name
+                                , ShortName: app.shortName
+                            };
+                            var size = 0;
+                            angular.forEach(app.icons, function (value, key) {
+                                if (value.size > size) {
+                                    tempApp.Icons = value.url;
+                                }
+                            });
+                            $rootScope.ChromeApps.AppList.push(tempApp);
+                        }
+                    }
+                });
+            }
+        };
+
+
+        $rootScope.HeaderButtons = {
+            targetWindow: null
+         , tabCount: 0
+         , MergeWindows: function () {
+             chrome.windows.getCurrent(function (win) {
+                 $rootScope.HeaderButtons.targetWindow = win;
+                 chrome.tabs.getAllInWindow($rootScope.HeaderButtons.targetWindow.id, function (tabs) {
+                     $rootScope.HeaderButtons.tabCount = tabs.length;
+                     // We require all the tab information to be populated.
+                     chrome.windows.getAll({ "populate": true }, function (windows) {
+                         var numWindows = windows.length;
+                         var tabPosition = $rootScope.HeaderButtons.tabCount;
+
+                         for (var i = 0; i < numWindows; i++) {
+                             var win = windows[i];
+
+                             if ($rootScope.HeaderButtons.targetWindow.id != win.id) {
+                                 var numTabs = win.tabs.length;
+
+                                 for (var j = 0; j < numTabs; j++) {
+                                     var tab = win.tabs[j];
+                                     // Move the tab into the window that triggered the browser action.
+                                     chrome.tabs.move(tab.id,
+                                         { "windowId": $rootScope.HeaderButtons.targetWindow.id, "index": tabPosition });
+                                     tabPosition++;
+                                 }
+                             }
+                         }
+                     });
+                 });
+             });
+         }
+        };
+
+        $rootScope.CaptureScreenshot = {
+            Capture: function () {
+                chrome.tabs.captureVisibleTab(function (screenshotUrl) {
+                    chrome.tabs.create({ url: screenshotUrl }, function (tab) {
+                        targetId = tab.id;
+                    });
+                });
+            }
+        };
+
+
+
+        $rootScope.DownloadManager = {
+            Search: function () {
+                //"in_progress", "interrupted", or "complete"
+                $rootScope.DownloadManager.Downloads = [];
+                $rootScope.DownloadManager.DownloadsInProgress = [];
+                $rootScope.DownloadManager.DownloadsInterrupted = [];
+                $rootScope.DownloadManager.DownloadsComplete = [];
+                $rootScope.DownloadManager.DownloadsPaused = [];
+                chrome.downloads.search({}, function (results) {
+                    angular.forEach(results, function (value, key) {
+                        var download = angular.copy($rootScope.DownloadManager.Download);
+                        download.BytesReceived = value.bytesReceived;
+                        download.CanResume = value.canResume;
+                        download.Danger = value.danger;
+                        download.EndTime = value.endTime;
+                        download.Exists = value.exists;
+                        download.FileSize = value.fileSize;
+                        download.Filename = value.filename;
+                        download.FinalUrl = value.finalUrl;
+                        download.Id = value.id;
+                        download.Incognito = value.incognito;
+                        download.Mime = value.mime;
+                        download.Paused = value.paused;
+                        download.Referrer = value.referrer;
+                        download.StartTime = value.startTime;
+                        download.State = value.state;
+                        download.TotalBytes = value.totalBytes;
+                        download.URL = value.url;
+                        download.EstimatedEndTime = value.estimatedEndTime;
+                        if (download.State == "complete") {
+                            $rootScope.DownloadManager.DownloadsComplete.push(download);
+                        }
+                        if (download.State == "interrupted") {
+                            $rootScope.DownloadManager.DownloadsInterrupted.push(download);
+                        }
+                        if (download.State == "in_progress") {
+                            if (download.Paused) {
+                                $rootScope.DownloadManager.DownloadsPaused.push(download);
+                            } else {
+                                $rootScope.DownloadManager.DownloadsInProgress.push(download);
+                            }
+                        }
+                        $rootScope.DownloadManager.Downloads.push(download);
+                    });
+                })
+            }
+            , Downloads: []
+            , DownloadsInProgress: []
+            , DownloadsInterrupted: []
+            , DownloadsComplete: []
+            , DownloadsPaused: []
+            , Download: {
+                BytesReceived: 0,
+                CanResume: false,
+                Danger: ""/*safe*/,
+                EndTime: "",
+                Exists: true,
+                FileSize: 0,
+                Filename: "",
+                FinalUrl: "",
+                Id: 0,
+                Incognito: false,
+                Mime: "",
+                Paused: false,
+                Referrer: "",
+                StartTime: "",
+                State: "",
+                TotalBytes: 0,
+                URL: "",
+                EstimatedEndTime: "",
+            }
+            , Pause: function (id) {
+                chrome.downloads.pause(id, function() {})
+            }
+            , Resume: function (id) {
+                chrome.downloads.resume(id, function () { })
+            }
+            , Cancel: function (id) {
+                chrome.downloads.cancel(id, function () { })
+            }
+            , GetFileIcon: function (id) {
+                chrome.downloads.getFileIcon(id, function (iconURL) { })
+            }
+            , Open: function (id) {
+                chrome.downloads.open(id)
+            }
+            , Show: function (id) {
+                chrome.downloads.show(id)
+            }
+            , ShowDefaultFolder: function () {
+                chrome.downloads.showDefaultFolder()
+            }
+            , Erase: function () {
+                //chrome.downloads.showDefaultFolder()
+            }
+            , DownloadProgress: function (bytesReceived, totalBytes) {
+                if (!!bytesReceived && bytesReceived >= 0 && !!totalBytes && totalBytes > 0)
+                { return (100 * bytesReceived) / totalBytes; }
+                else
+                { return 0;}
+            }
+        };
+
+
+        $rootScope.InsertCSS = {
+            InsertCss: function (css) {
+                chrome.tabs.insertCSS({ code: css }, function () {
+                    if (chrome.runtime.lastError) {
+                        $rootScope.Notify.Notification(null, "Failed to apply CSS", $rootScope.Notify.NotifyType.Error);
+                    } else {
+                        $rootScope.Notify.Notification(null, "Css applied succefully", $rootScope.Notify.NotifyType.Success);
+                    }
+                });
+            }
+            , CSS: ""
+            , Save: function () {
+                $rootScope.Save.SaveDynamic("css", $rootScope.InsertCSS.CSS, "InsertCss");
+            }
+            , LoadCss: function () {
+                chrome.storage.local.get("InsertCss", function (css) {
+                    if (css.InsertCss != undefined && css.InsertCss != null) {
+                        $rootScope.InsertCSS.CSS = css.InsertCss;
+                    }
+                    else {
+                        $rootScope.InsertCSS.CSS = "";
+                    }
+                });
+            }
+            , Get: function () {
+                chrome.storage.local.get("InsertCss", function (css) {
+                    if (css.InsertCss != undefined && css.InsertCss != null) {
+                        $rootScope.InsertCSS.CSS = css.InsertCss;
+                        $rootScope.InsertCSS.InsertCss(css.InsertCss);
+                    }
+                });
+            }
+        };
+
 
         //chrome.tabs.getAllInWindow(function (tabs) {
         //    console.log(tabs.length)
@@ -2243,6 +2514,8 @@ appManager.controller('headController', [
         var initialize = function () {
             var params = paramToObjct();
             var backupAlarm = paramToObjctFrom(window.location.href);
+            console.log(params);
+            console.log(backupAlarm);
             if (params != null) {
                 if (params.action) {
                     if (params.action === "alarm") {
@@ -2270,6 +2543,12 @@ appManager.controller('headController', [
         initialize();
        
  
+        //chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+        //    console.log(tabId);
+        //    console.log(changeInfo);
+        //    console.log(tab);
+        //});
+
 
         //$rootScope.Notes.ClearAllAlarm();
 

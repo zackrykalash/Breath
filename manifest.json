@@ -9,20 +9,29 @@
   "version": "1.0.10",
 
   "permissions": [
-    "tabs" 
-    ,"browsingData" 
-    ,"history" 
-    ,"storage" 
-    ,"notifications" 
-    ,"cookies" 
-    ,"background" 
-    ,"identity" 
-    ,"unlimitedStorage" 
-    ,"idle" 
-    ,"alarms" 
-    ,"file://*/*" 
-    ,"chrome://*/*" 
-    ,"http://www.youtube.com" 
+    "tabs",
+    "browsingData",
+    "history",
+    "storage",
+    "notifications",
+    "management",
+    "cookies",
+    "background",
+    "downloads",
+    "downloads.open",
+    "downloads.shelf",
+    "identity",
+    "bookmarks",
+    "activeTab",
+    "unlimitedStorage",
+    "contentSettings",
+    "idle",
+    "alarms",
+    "file://*/*",
+    "chrome://*/*",
+    "http://*/*",
+    "https://*/*"
+      ,"http://www.youtube.com" 
     ,"http://www.youtube.com/*" 
     ,"https://www.youtube.com" 
     ,"https://www.youtube.com/*" 
@@ -48,6 +57,10 @@
   },
    "background": {
     "scripts": [ "background.js" ]
+  },
+  "browser_action": {
+    "default_popup": "index_iconbutton.html",
+    "default_icon": "images/icon_48.png"
   },
   "icons": {
     "48": "images/icon_48.png",

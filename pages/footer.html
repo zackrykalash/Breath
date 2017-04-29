@@ -34,4 +34,14 @@
             <button ng-repeat="link in $root.Links.Links | orderBy: ['-Favorite','-Count']  | filter: linkSearch track by $index" ng-if="(link.Favorite == true)" type="button" class="btn btn-default {{$root.Colors.Text}} overriderlistgroupitem col-md-2 col-sm-4 col-xs-12"><a href="{{link.URL}}" ng-bind="link.Title" data-ng-click="$root.Links.Counter(link)"></a></button>
         </zackry-footer-buttons-list>
     </div>
+    <div class="col-md-12" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.AppList)">
+        <br>
+        <h1 class="{{$root.Colors.Text}}">My Apps</h1>
+    </div>
+    <div class="col-md-12" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.AppList)">
+        <br>
+        <zackry-footer-buttons-list>
+            <button ng-repeat="app in $root.ChromeApps.AppList track by $index" type="button" class="btn btn-default {{$root.Colors.Text}} overriderlistgroupitem col-md-2 col-sm-4 col-xs-12"><a href="{{link.URL}}" ng-bind="app.Name" data-ng-click="$root.ChromeApps.LaunchApp(app.Id)"></a></button>
+        </zackry-footer-buttons-list>
+    </div>
 </zackry-footer>
