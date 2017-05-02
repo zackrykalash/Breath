@@ -739,12 +739,9 @@ appManager.controller('headController', [
                     url: '/upload',
                     data: { file: file }
                 }).then(function (resp) {
-                    console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                 }, function (resp) {
-                    console.log('Error status: ' + resp.status);
                 }, function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                 });
             }
             , Callback: function (file) {
@@ -2066,14 +2063,12 @@ appManager.controller('headController', [
             , ClearAlarm: function (value) {
                 chrome.alarms.clear(value, function (wasCleared) {
                     if (wasCleared) {
-                        console.log(value + "was cleared");
                     }
                 });
             }
             , ClearAllAlarm: function () {
                 chrome.alarms.clearAll(function (wasCleared) {
                     if (wasCleared) {
-                        console.log("all alarms cleared");
                     }
                 });
             }
@@ -2105,7 +2100,6 @@ appManager.controller('headController', [
             }
             , CheckMissedAlarms: function () {
                 chrome.alarms.getAll(function (alarms) {
-                    console.log(alarms);
                     angular.forEach(alarms, function (value, key) {
                         var timeDiff = (value.scheduledTime - new Date().getTime());
                         if (timeDiff < 0) {
@@ -2160,7 +2154,6 @@ appManager.controller('headController', [
                 var oneWeekAgo = (new Date).getTime() - microseconds;
                 chrome.history.search({ 'text': '', 'startTime': oneWeekAgo }, function (historyItems) {
                     for (var i = 0; i < historyItems.length; ++i) {
-                        console.log(historyItems[i]);
                         var url = historyItems[i].url;
                         var title = historyItems[i].title;
                         var visitCount = historyItems[i].visitCount;
@@ -2514,8 +2507,6 @@ appManager.controller('headController', [
         var initialize = function () {
             var params = paramToObjct();
             var backupAlarm = paramToObjctFrom(window.location.href);
-            console.log(params);
-            console.log(backupAlarm);
             if (params != null) {
                 if (params.action) {
                     if (params.action === "alarm") {

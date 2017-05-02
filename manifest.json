@@ -6,7 +6,7 @@
   "description": "Breath is an extension, your personal content management system. if you have more ideas you want send them to breathnewtab@gmail.com",
   "author": "Zackry, if you have more ideas send them to breathnewtab@gmail.com",
 
-  "version": "1.0.10",
+  "version": "1.0.12",
 
   "permissions": [
     "tabs",
