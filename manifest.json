@@ -69,7 +69,7 @@
   },
   "content_scripts": [
     {
-      "js": [ "./js/thirdpartyangularjs/youtubeiframe.js", "./js/thirdpartyangularjs/angular-youtube-embed.min.js", "./js/thirdpartyangularjs/www-widgetapi.js" ],
+      "js": [ "./js/thirdpartyangularjs/youtubeiframe.js", "./js/thirdpartyangularjs/angular-youtube-embed.js", "./js/thirdpartyangularjs/www-widgetapi.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
     }
   ]
