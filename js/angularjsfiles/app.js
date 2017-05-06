@@ -10,7 +10,7 @@ var appManager = angular.module('appManager', [
     , 'ui.bootstrap'
     , 'angular-datepicker'
     , 'bw.paging'
-    , '720kb.datepicker'
+    //, '720kb.datepicker'
     , 'ngWYSIWYG'
     , 'youtube-embed'
     , 'ngTagsInput'

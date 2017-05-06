@@ -56,7 +56,7 @@ appManager.controller('headController', [
                 $rootScope.Notes.Get();
                 //$rootScope.History.Search();
                 $rootScope.ChromeApps.GetApps();
-                $rootScope.DownloadManager.Search();
+                //$rootScope.DownloadManager.Search();
                 $rootScope.InsertCSS.LoadCss();
                 failSaveInt--;
                 if (failSaveInt <= 0) {
@@ -625,10 +625,10 @@ appManager.controller('headController', [
                 , Title: null
                 , URL: null
                 , Image: {
-                    base64: null
+                    base64: base64DefaultLinkImage
                     , filename: null
                     , filesize: null
-                    , filetype: null
+                    , filetype: imageTypeDefaultLinkImage
                 }
                 , Favorite: false
                 , Secret: false
@@ -645,7 +645,12 @@ appManager.controller('headController', [
                 $rootScope.Links.Link.Id = null;
                 $rootScope.Links.Link.Title = null;
                 $rootScope.Links.Link.URL = null;
-                $rootScope.Links.Link.Image = null;
+                $rootScope.Links.Link.Image = {
+                    base64: base64DefaultLinkImage
+                    , filename: null
+                    , filesize: null
+                    , filetype: imageTypeDefaultLinkImage
+                };
                 $rootScope.Links.Link.Favorite = false;
                 $rootScope.Links.Link.Count = 0;
             }
@@ -2097,6 +2102,7 @@ appManager.controller('headController', [
                     $rootScope.Save.SaveDynamic("note", $rootScope.Notes.Notes, "Notes");
                     $rootScope.Notify.Notification(null, "note removed.", $rootScope.Notify.NotifyType.Warning);
                 }
+                $('#alarmnote').modal('hide');
             }
             , CheckMissedAlarms: function () {
                 chrome.alarms.getAll(function (alarms) {
@@ -2283,6 +2289,8 @@ appManager.controller('headController', [
                 $rootScope.DownloadManager.DownloadsInterrupted = [];
                 $rootScope.DownloadManager.DownloadsComplete = [];
                 $rootScope.DownloadManager.DownloadsPaused = [];
+                var downloadsTodayeDate = new Date();
+                downloadsTodayeDate.setDate(downloadsTodayeDate.getDate() - 5);
                 chrome.downloads.search({}, function (results) {
                     angular.forEach(results, function (value, key) {
                         var download = angular.copy($rootScope.DownloadManager.Download);

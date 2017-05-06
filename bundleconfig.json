@@ -1,0 +1,96 @@
+﻿[
+  {
+    "outputFileName": "minified/styles.css",
+    "inputFiles": [
+    "js/jqueryui/jquery-ui.css",
+    "js/bootstrap/css/bootstrap.css",
+    "stylesheets/bootstrap-material-design-css/css/bootstrap-material-design.css",
+    "stylesheets/bootstrap-material-design-css/css/ripples.css",
+    "stylesheets/normalize.css",
+    "stylesheets/toggles.css",
+    "stylesheets/loaders.css",
+    "js/thirdpartyangularjs/angular-ui-notification.css",
+    "fonts/fontAwesome/css/font-awesome.css",
+    "js/angular-datepicker-master/build/themes/default.css",
+    "js/angular-datepicker-master/build/themes/default.date.css",
+    "js/angular-datepicker-master/build/themes/default.time.css",
+    "js/ngWYSIWYG-master/editor.css",
+    "js/ng-tags-input/ng-tags-input.bootstrap.css",
+    "js/ng-tags-input/ng-tags-input.css",
+    "stylesheets/snip.css",
+    "stylesheets/materializecolors.css",
+    "stylesheets/materialoverloads.css",
+    "stylesheets/overloads.css",
+    "js/ng-embed-master/ng-embed.css",
+    "stylesheets/entry.css",
+    "stylesheets/resetcss.css",
+    "js/angular-bootstrap-datetimepicker-master/css/datetimepicker.css",
+    "js/angularjs-slider-master/rzslider.css",
+    ],
+    "minify": {
+      "enabled": true,
+      "commentMode": "none",
+      "outputMode": "singleLine",
+         "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "minified/javascripts.js",
+    "inputFiles": [
+    "js/jquery/jquery-2.1.4.min.js",
+    "js/jqueryui/jquery-ui.min.js",
+    "js/jquery.form.min.js",
+    "js/bootstrap/js/bootstrap.min.js",
+    "js/momentswithlocals.js",
+    "stylesheets/bootstrap-material-design-css/js/material.min.js",
+    "stylesheets/bootstrap-material-design-css/js/ripples.min.js",
+    "js/angular/angular.min.js",
+    "js/angular/angular-animate.min.js",
+    "js/angular/angular-cookies.min.js",
+    "js/angular/angular-loader.min.js",
+    "js/angular/angular-messages.min.js",
+    "js/angular/angular-message-format.min.js",
+    "js/angular/angular-resource.min.js",
+    "js/angular/angular-route.min.js",
+    "js/angular/angular-sanitize.min.js",
+    "js/angular/angular-touch.min.js",
+    "js/angular/angular-sanitize.min.js",
+    "js/angular/angular-ui-router.min.js",
+    "js/angular/angular.audio.js",
+    "js/angular-base64/angular-base64-upload.min.js",
+    "js/base64/angular-base64.min.js",
+    "js/angular/ui-bootstrap-2.5.0.js",
+    "js/angular-datepicker-master/build/angular-datepicker.js",
+    "js/Angular-Paging-master/paging.min.js",
+    "js/ngWYSIWYG-master/wysiwyg.min.js",
+    "js/ng-tags-input/ng-tags-input.min.js",
+    "js/thirdpartyangularjs/angular-ui-notification.min.js",
+    "js/thirdpartyangularjs/youtubeiframe.js",
+    "js/thirdpartyangularjs/www-widgetapi.js",
+    "js/thirdpartyangularjs/angular-youtube-embed.min.js",
+    "js/savefile/angular-file-saver.min.js",
+    "js/savefile/angular-file-saver.bundle.min.js",
+    "js/uploadfiles/ng-file-upload-shim.min.js",
+    "js/uploadfiles/ng-file-upload-all.min.js",
+    "js/uploadfiles/ng-file-upload.min.js",
+    "js/ng-embed-master/highlight.min.js",
+    "js/ng-embed-master/widgets.js",
+    "js/ng-embed-master/ng-embed.min.js",
+    "js/angular-bootstrap-datetimepicker-master/js/datetimepicker.js",
+    "js/angular-bootstrap-datetimepicker-master/js/datetimepicker.templates.js",
+    "js/angularjs-slider-master/rzslider.js",
+    "js/angular-file-input-master/angular-file-input.js",
+    "js/track17/externalcall.js" 
+    ],
+    "minify": {
+      "enabled": true,
+      "outputMode": "singleLine",
+         "preserveImportantComments": false
+    }
+  }
+]
+
+
+
+
+    

@@ -66,5 +66,28 @@
     "48": "images/icon_48.png",
     "128": "images/icon_128.png",
     "256": "images/icon_256.png"
-  }
+  },
+  //"content_scripts": [
+  //  {
+  //    "js": [
+  //      "./js/angularjsfiles/app.js",
+  //      "./js/angularjsfiles/constants.js",
+  //      "./js/angularjsfiles/config.js",
+  //      "./js/angularjsfiles/partscontroller.js",
+  //      "./js/angularjsfiles/directive.js",
+  //      "./js/angularjsfiles/filter.js",
+  //      "./js/main.js",
+  //      "./minified_backup/javascripts.js",
+  //      "./js/thirdpartyangularjs/youtubeiframe.js",
+  //      "./js/thirdpartyangularjs/angular-youtube-embed.js",
+  //      "./js/thirdpartyangularjs/www-widgetapi.js"
+
+  //    ],
+  //    "css": [
+  //      "./stylesheets/style.css",
+  //      "./minified_backup/styles_oneline.css"
+  //    ],
+  //    "matches": [ "http://*/*", "https://*/*" ]
+  //  }
+  //]
 }

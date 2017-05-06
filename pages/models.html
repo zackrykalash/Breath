@@ -1,14 +1,28 @@
 ﻿<zackry-modals modalid="alarmnote" modaltitle="Alarm reminder" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
     <div class="panel {{$root.Notes.DateType($root.Notes.AlarmNote.Date)}}">
-        <div class="panel-heading" ng-bind-html="$root.Utils.SCE($root.Notes.AlarmNote.Title)"></div>
-        <div class="panel-body resetThis" ng-bind-html="$root.Utils.SCE($root.Notes.AlarmNote.Value)"></div>
-        <div class="panel-body">
+        <div class="panel-heading text-black" ng-bind-html="$root.Utils.SCE($root.Notes.AlarmNote.Title)"></div>
+        <div class="panel-body resetThis text-black" ng-bind-html="$root.Utils.SCE($root.Notes.AlarmNote.Value)"></div>
+        <div class="panel-body text-black">
             <div id="snackbar-container">
                 <div class="snackbar snackbar-opened display-inlineblock" ng-repeat="tag in $root.Notes.AlarmNote.Tags track by $index">
                     <span class="snackbar-content  wordbreakall " ng-bind-html="$root.Utils.SCE(tag)"></span>
                 </div>
             </div>
         </div>
-        <div class="panel-footer" ng-bind="$root.Notes.AlarmNote.Date | DisplayDateTime"></div>
+        <div class="panel-footer text-black">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6 text-black">
+                    <span ng-bind="$root.Notes.AlarmNote.Date | DisplayDateTime"></span>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+                    <button class="btn btn-danger fix-btn-height nopadding nomargin text-right" type="button" data-dismiss="alarmnote" ng-click="$root.Notes.Remove($root.Notes.AlarmNote)">
+                        <i class="fa fa-times text-danger"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </zackry-modals>
+
+
+
