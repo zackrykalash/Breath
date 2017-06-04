@@ -16,20 +16,54 @@
                 </div>
             </zackry_panel>
 
-            <zackry_panel paneltitle="Selectors">
+            <zackry_panel paneltitle="Selectors" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                 <form class="col-md-12 usersadd percntage_form remove_input_padding" id="usersadd" method="post" enctype="multipart/form-data">
-                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="text" zid="text" zlabel="Text"   zchoices="$root.Colors.Texts" zmodel="$root.Colors.Text"></zackry_form_group_select>
+                    <!--<zackry_form_group_select zisempty="true" zclass="col-md-4" zname="text" zid="text" zlabel="Text"   zchoices="$root.Colors.Texts" zmodel="$root.Colors.Text"></zackry_form_group_select>
                     <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="background" zid="background" zlabel="Background"   zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.Background"></zackry_form_group_select>
                     <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="opcity" zid="opcity" zlabel="Opcity"   zchoices="$root.Colors.Opacities" zmodel="$root.Colors.Opacity"></zackry_form_group_select>
-                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="bodybackgrounds" zid="bodybackgrounds" zlabel="Body Backgrounds"   zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.BodyBackgrounds"></zackry_form_group_select>
-                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatecolors" zname="updatecolors" zlabel="Update Colors"   ztype="btn-primary" zonclick="$root.Colors.Save()"></zackry-buttons>
-                  </form>
+                    <zackry_form_group_select zisempty="true" zclass="col-md-4" zname="bodybackgrounds" zid="bodybackgrounds" zlabel="Body Backgrounds"   zchoices="$root.Colors.Backgrounds" zmodel="$root.Colors.BodyBackgrounds"></zackry_form_group_select>-->
+
+
+                    <span class="col-md-4">
+                        <label for="text" class="control-label">Text</label>
+                        <select required id="text" class="form-control" name="text" ng-model="$root.Colors.Text">
+                            <option class="{{$root.Colors.Background + ' ' + zvalue.Value}}" value="{{zvalue.Value}}" ng-selected="(equals(zvalue.Value ,zmodel))" ng-repeat="zvalue in $root.Colors.Texts track by $index">{{zvalue.Title}}</option>
+                        </select>
+                    </span>
+
+                    <span class="col-md-4">
+                        <label for="background" class="control-label">Background</label>
+                        <select required id="background" class="form-control" name="background" ng-model="$root.Colors.Background">
+                            <option class="{{zvalue.Value + ' ' + $root.Colors.Text}}" value="{{zvalue.Value}}" ng-selected="(equals(zvalue.Value ,zmodel))" ng-repeat="zvalue in $root.Colors.Backgrounds track by $index">{{zvalue.Title}}</option>
+                        </select>
+                    </span>
+
+                    <span class="col-md-4">
+                        <label for="opcity" class="control-label">Opacity</label>
+                        <select required id="opcity" class="form-control" name="opcity" ng-model="$root.Colors.Opacity">
+                            <option class="{{$root.Colors.Background + ' ' + $root.Colors.Text + ' ' + zvalue.Value}}" value="{{zvalue.Value}}" ng-selected="(equals(zvalue.Value ,zmodel))" ng-repeat="zvalue in $root.Colors.Opacities track by $index">{{zvalue.Title}}</option>
+                        </select>
+
+                    </span>
+
+                    <span class="col-md-4">
+                        <label for="bodybackgrounds" class="control-label">Opacity</label>
+                        <select required id="bodybackgrounds" class="form-control" name="bodybackgrounds" ng-model="$root.Colors.BodyBackgrounds">
+                            <option class="text-black {{zvalue.Value}}" value="{{zvalue.Value}}" ng-selected="(equals(zvalue.Value ,zmodel))" ng-repeat="zvalue in $root.Colors.Backgrounds track by $index">{{zvalue.Title}}</option>
+                        </select>
+
+                    </span>
+
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatecolors" zname="updatecolors" zlabel="Update Colors" ztype="btn-primary" zonclick="$root.Colors.Save()"></zackry-buttons>
+
+
+                </form>
             </zackry_panel>
 
-            <zackry_panel paneltitle="Background Colors">
+            <!--<zackry_panel paneltitle="Background Colors">
                 <div class="row">
                     <div class="col-md-12">
-                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filterbackgrounds" zid="filterbackgrounds" zlabel="Filter your backgrounds:"   zmodel="backgroundSearch"></zackry_form_group_input>
+                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filterbackgrounds" zid="filterbackgrounds" zlabel="Filter your backgrounds:" zmodel="backgroundSearch"></zackry_form_group_input>
                     </div>
                 </div>
                 <div class="background-color-container">
@@ -46,7 +80,7 @@
             <zackry_panel paneltitle="Text Colors">
                 <div class="row">
                     <div class="col-md-12">
-                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filtertextcolor" zid="filtertextcolor" zlabel="Filter your text color:"   zmodel="textcolorSearch"></zackry_form_group_input>
+                        <zackry_form_group_input zisempty="true" zclass="col-md-3" ztype="text" zname="filtertextcolor" zid="filtertextcolor" zlabel="Filter your text color:" zmodel="textcolorSearch"></zackry_form_group_input>
                     </div>
                 </div>
                 <div class="text-color-container">
@@ -58,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-            </zackry_panel>
+            </zackry_panel>-->
 
         </div>
     </div>

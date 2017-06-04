@@ -1,0 +1,11 @@
+﻿<div ng-init="zmodeltemp = {}" class="form-group form-group-lg label-floating {{zclass}}" ng-class="{'is-focused': zisfocused, 'is-empty': (zisempty == true || zisempty == 'true') && (zmodel == null || zmodel == undefined)}" ng-show="(zshow != undefined ? zshow : true)">
+    <label for="{{zid}}" class="control-label {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zlabel)"></label>
+    <!-- <input required type="{{ztype}}" name="{{zname}}" class="form-control {{ztextclass}}" id="{{zid}}" ng-model="zmodel" data-ng-click="zonClick()" ng-change="zonchange()">  <!--ng-keyup="setevent(zevent=$event);"-->
+    <ui-select ng-model="zmodeltemp.Value" title="{{zlabel}}" close-on-select="true" ng-disabled="false" search-enabled="true" reset-search-input="true" theme="bootstrap" on-select="onSelect($item, $model)" on-remove="onRemove($item, $model)">
+        <ui-select-match placeholder="Select person...">{{$item.Title}}</ui-select-match>
+        <ui-select-choices repeat="item in zitems | filter: $select.search">
+            <p ng-bind-html="item.Title | highlight: $select.search"></p>
+        </ui-select-choices>
+    </ui-select>
+    <span class="help-block {{ztextclass}}" ng-bind-html="$root.Utils.SCE(zhelp)"></span>
+</div>

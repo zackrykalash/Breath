@@ -1,0 +1,27 @@
+﻿<div class="btn-group {{zclass}}" ng-show="(zshow != undefined ? zshow : true)">
+    <a class="btn {{ztype}} btn-raised" data-ng-click="zonclick()" ng-bind="zlabel" ng-disabled="zdisabled">Default raised<div class="ripple-container"></div></a>
+    <a data-target="{{'#'+zid}}" class="btn {{ztype}} btn-raised dropdown-toggle" data-toggle="dropdown" aria-expanded="false" ng-disabled="zdisabled"><span class="caret"></span><div class="ripple-container"></div></a>
+    <ul class="dropdown-menu">
+
+        <li ng-hide="zlinks" ng-repeat="action in zpreactions track by $index">
+            <button role="button" class="btn btn-link" ng-click="action.Action()" ng-bind="action.Title" ng-disabled="action.Disabled" ng-hide="action.Hide"></button>
+        </li>
+
+        <li ng-hide="!zlinks" ng-repeat="action in zpreactions track by $index">
+            <a ng-click="action.Action()" ng-bind="action.Title" class="btn btn-link btn-action-link-fix" ng-disabled="action.Disabled" ng-hide="action.Hide || action.Disabled"></a>
+            <a ng-bind="action.Title" class="btn btn-link btn-action-link-fix" ng-disabled="action.Disabled" ng-hide="action.Hide || !action.Disabled"></a>
+        </li>
+
+        <li class="divider" ng-show="(zpostactions.length > 0)"></li>
+
+        <li ng-hide="zlinks" ng-repeat="action in zpostactions track by $index">
+            <button role="button" class="btn btn-link" ng-click="action.Action()" ng-bind="action.Title" ng-disabled="action.Disabled" ng-hide="action.Hide"></button>
+        </li>
+
+        <li ng-hide="!zlinks" ng-repeat="action in zpostactions track by $index">
+            <a ng-click="action.Action()" ng-bind="action.Title" class="btn btn-link btn-action-link-fix" ng-disabled="action.Disabled" ng-hide="action.Hide || action.Disabled"></a>
+            <a ng-bind="action.Title" class="btn btn-link btn-action-link-fix" ng-disabled="action.Disabled" ng-hide="action.Hide || !action.Disabled"></a>
+        </li>
+
+    </ul>
+</div>

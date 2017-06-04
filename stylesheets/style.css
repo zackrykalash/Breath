@@ -1,5 +1,4 @@
-﻿@import url(http://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.2/css/weather-icons.min.css);
-@font-face {
+﻿@font-face {
     font-family: "Lato";
     src: url(/fonts/Lato/Lato-Regular.ttf);
 }
@@ -54,8 +53,9 @@ body,div,h1,h2,h3,h4,h5,h6,p,ul,li{font-family:'Lato';margin:0 auto;padding:0;}
 header,section,footer,aside,nav,article,hgroup{display:block;}
 header{display:block;height:120px; width:100%;margin:0 !important;padding:0 !important;z-index:910;box-shadow:0px -5px 25px #333,0px -15px 58px #333;}
 html{overflow-x:hidden;}
-body{margin:0 auto;width:100%;display:block;transition:transform 2s;background: none !important;}
+body{margin:0 auto;width:100%;display:block;transition:transform 2s;background: none !important;padding: 0;}
 html{ }
+
 .fixed-bg {
     background-attachment: fixed;
     background-position: center;
@@ -737,6 +737,7 @@ line {
 .app-list-group > .app-list-group-item > .app-row-picture{width: 50%;}
 .app-list-group > .app-list-group-item > .app-row-picture img{width: 100%;}
 .app-list-group > .app-list-group-item > .app-row-content{}
+.app-list-group > .app-list-group-item > .app-row-content{height: 50px;}
 
 
 
@@ -748,7 +749,18 @@ line {
 .simple-icon-button-grey:hover{color: #99a3a9 !important;}
 .simple-icon-button-action-button:active{transform: translate(0px,5px);-webkit-transform: translate(0px,5px);border-bottom: 1px solid;}
 
- 
 
+.row-title {
+    text-decoration:underline;
+    padding:10px;
+}
 
+.progress {
+margin: 0;
+}
 
+.downloads-li {
+    min-height: 200px;
+    /*padding: 30px 15px;*/
+    word-wrap: break-word;
+}

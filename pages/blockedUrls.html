@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="height-space"></div>
+    <div class="container">
+        <div class="row">
+
+            <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                <form class="col-md-12 usersadd percntage_form remove_input_padding" enctype="multipart/form-data">
+                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-3" zisempty="true" ztype="text" zname="title" zid="title" zlabel="Title"   zmodel="$root.BlockedUrls.BlockedUrl.Title"></zackry_form_group_input>
+                    <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-3" zisempty="true" ztype="text" zname="url" zid="url" zlabel="URL"   zmodel="$root.BlockedUrls.BlockedUrl.Value"></zackry_form_group_input>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-3" zname="whole" zid="whole" zlabel="Whole" zchoices="$root.Settings.Select.YesNo" zmodel="$root.BlockedUrls.BlockedUrl.Whole"></zackry-form-group-select>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <zackry-buttons zdisabled="($root.BlockedUrls.IsEmpty())" zclass="col-md-4" zisempty="false" zisfocused="false" zid="addlink" zname="addlink" zlabel="Add Link"   ztype="btn-default" zonclick="$root.BlockedUrls.Save()"></zackry-buttons>
+                         </div>
+                    </div>
+                </form>
+            </zackry_panel>
+
+            <!--<zackry_panel paneltitle="Basic Information">
+            <div class="block well-danger col-md-3" ng-repeat="link in $root.Links.BLinksDemos track by $index">
+                    <p ng-bind="link.Title"></p>
+                    <p ng-bind="link.URL"></p>
+                    <p><a ng-click="$root.addit(link)">add it</a></p>
+                    <p><a ng-click="$root.removeit($index)">remove it</a></p>
+            </div>
+        </zackry_panel>-->
+        </div>
+   
+    
+    
+
+
+        <zackry_panel paneltitle="Blocked Urls" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}" >
+
+            <div class="row">
+                <ul class="{{$root.Colors.Text}}">
+                    <li class="col-md-6 col-sm-6 col-xs-12 downloads-li {{$root.Colors.Text}}" ng-repeat="blockedUrl in $root.BlockedUrls.BlockedUrls track by $index">
+                        <div class="recent-post clearfix">
+                            <h3 class="post-title">
+                                <a class="cursor-pointer {{$root.Colors.Text}}">{{blockedUrl.Title}}</a>
+                            </h3>
+                            <p>{{blockedUrl.Value}}</p>
+                            <button class="btn btn-danger remove-button fix-btn-height nopadding nomargin text-right" type="button" ng-click="$root.BlockedUrls.Remove(blockedUrl)">
+                                <i class="fa fa-times text-danger"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </zackry_panel>
+
+
+    
+    
+    
+    
+    
+    
+    
+     </div>
+</div>

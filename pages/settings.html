@@ -1,32 +1,38 @@
-<div class="container-fluid">
-    <div class="height-space"></div>
-    <div class="container">
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 height-space"></div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="row">
-
-            <form>
+            <form class="col-md-12 col-sm-12 col-xs-12">
                 <zackry-panel paneltitle="Reset Data" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <div class="row">
-                        <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#resetalldata" zclass="col-md-8" zisempty="false" zisfocused="false" zlabel="Reset All Data (without Links, Your links will not be deleted)"   ztype="btn-danger"></zackry-modal-buttons>
-                        <zackry-modal-buttons zdatatoggle="modal" zdatatarget="#deleteallliinks" zclass="col-md-4" zisempty="false" zisfocused="false" zlabel="Delete All Links"   ztype="btn-danger"></zackry-modal-buttons>
-                    </div>
-                    <zackry-modals modalid="deleteallliinks" modaltitle="Delete All Links" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
-                        <p class="text-danger">Are you sure you want to delete all links?</p>
-                        <button class="btn btn-danger fix-btn-height" data-dismiss="modal" type="button" ng-click="$root.Links.RemoveLinks()">
-                            Delete All
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </zackry-modals>
-                    <zackry-modals modalid="resetalldata" modaltitle="Reset All Data (without Links, Your links will not be deleted)" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
-                        <p class="text-danger">Are you sure you want to reset all data? your links will not be deleted, everything else will be reset to default.</p>
-                        <button class="btn btn-danger fix-btn-height" data-dismiss="modal" type="button" ng-click="$root.Links.RemoveLinks()">
-                            Reset All
-                            <i class="fa fa-exclamation-triangle"></i>
-                        </button>
-                    </zackry-modals>
+                        <zackry-confirmation-modal zdatatoggle="modal" zdatatarget="#resetalldata"
+                                                   zbtnclass="col-md-8" ztype="btn-danger"
+                                                   zisempty="false" zisfocused="false"
+                                                   modalmessage="Are you sure you want to reset all data? your links will not be deleted, everything else will be reset to default."
+                                                   modalid="resetalldata" zlabel="Reset All Data (without Links, Your links will not be deleted)" modaltitle="Delete All Links"
+                                                   zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}"
+                                                   zbuttonclass="col-md-4" zbuttonisfocused="false" zbuttonisempty="false" zbuttonid="deleteall"
+                                                   zbuttonname="resetall" zbuttonlabel="Reset All" zbuttonhelp="Reset All"
+                                                   zbuttontype="btn-danger" zbuttondatadismiss="modal" zbuttononclick="$root.DeleteAll()"></zackry-confirmation-modal>
+                    
+                        <zackry-confirmation-modal zdatatoggle="modal" zdatatarget="#deleteallliinks"
+                                                   zbtnclass="col-md-4" ztype="btn-danger"
+                                                   zisempty="false" zisfocused="false"
+                                                   modalmessage="Are you sure you want to delete all links?"
+                                                   modalid="deleteallliinks" zlabel="Delete All Links" modaltitle="Delete All Links"
+                                                   zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}"
+                                                   zbuttonclass="col-md-4" zbuttonisfocused="false" zbuttonisempty="false" zbuttonid="deleteall"
+                                                   zbuttonname="deleteall" zbuttonlabel="Delete All" zbuttonhelp="Delete All"
+                                                   zbuttontype="btn-danger" zbuttondatadismiss="modal" zbuttononclick="$root.Links.RemoveLinks()"></zackry-confirmation-modal>
+                     </div>
                 </zackry-panel>
+
+
+
+
             </form>
 
-            <form>
+            <form class="col-md-12 col-sm-12 col-xs-12">
                 <zackry-panel paneltitle="User Info" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="firstName" zid="firstName" zlabel="First Name"   zmodel="$root.Settings.Settings.User.FirstName"></zackry-form-group-input>
                     <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="text" zname="lastName" zid="lastName" zlabel="Last Name"   zmodel="$root.Settings.Settings.User.LastName"></zackry-form-group-input>
@@ -36,7 +42,7 @@
                 </zackry-panel>
             </form>
 
-            <form>
+            <form class="col-md-12 col-sm-12 col-xs-12">
                 <zackry-panel paneltitle="Add Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <!--## ClearData ##-->
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="cleardata" zid="cleardata" zlabel="Clear Data"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.ClearData"></zackry-form-group-select>
@@ -52,10 +58,14 @@
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="shipment" zid="shipment" zlabel="Shipment"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Shipment"></zackry-form-group-select>
                     <!--## Colors ##-->
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="colors" zid="colors" zlabel="Colors"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Colors"></zackry-form-group-select>
+                    <!--## Colors ##-->
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="colors" zid="blockedurls" zlabel="Blocked Urls"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.BlockedUrls"></zackry-form-group-select>
                     <!--## Youtube ##-->
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="youtube" zid="youtube" zlabel="Youtube"   zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Youtube"></zackry-form-group-select>
                     <!--## WelcomeScreen ##-->
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="welcomescreen" zid="welcomescreen" zlabel="Welcome Screen" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.WelcomeScreen"></zackry-form-group-select>
+                     <!--## Downloads ##-->
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="downloads" zid="downloads" zlabel="Show Downloads" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Downloads"></zackry-form-group-select>
                     <!--## Footer ##-->
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="footer" zid="footer" zlabel="Footer" zchoices="$root.Settings.Select.YesNo" zmodel="$root.Settings.Settings.Visibility.Footer"></zackry-form-group-select>
                     <!--## AppList ##-->
@@ -67,9 +77,13 @@
                     <!--## NavType ##-->
                     <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="navtype" zid="navtype" zlabel="Nav Type"   zchoices="$root.Settings.Select.NavType" zmodel="$root.Settings.Settings.Visibility.NavType"></zackry-form-group-select>
                     <!--## LinksSize ##-->
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizeextrasmall" zid="linkssizeextrasmall" zlabel="Links Size xs"   zchoices="$root.Settings.Select.SizesXS" zmodel="$root.Settings.Settings.Visibility.LinksSizeExtraSmall"></zackry-form-group-select>
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizesmall" zid="linkssizesmall" zlabel="Links Size sm"   zchoices="$root.Settings.Select.SizesSM" zmodel="$root.Settings.Settings.Visibility.LinksSizeSmall"></zackry-form-group-select>
-                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizemedium" zid="linkssizemedium" zlabel="Links Size md"   zchoices="$root.Settings.Select.SizesMD" zmodel="$root.Settings.Settings.Visibility.LinksSizeMedium"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizeextrasmall" zid="linkssizeextrasmall" zlabel="Links Size xs" zchoices="$root.Settings.Select.SizesXS" zmodel="$root.Settings.Settings.Visibility.LinksSizeExtraSmall"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizesmall" zid="linkssizesmall" zlabel="Links Size sm" zchoices="$root.Settings.Select.SizesSM" zmodel="$root.Settings.Settings.Visibility.LinksSizeSmall"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="linkssizemedium" zid="linkssizemedium" zlabel="Links Size md" zchoices="$root.Settings.Select.SizesMD" zmodel="$root.Settings.Settings.Visibility.LinksSizeMedium"></zackry-form-group-select>
+                    <!--## AppsSize ##-->
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="appssizeextrasmall" zid="appssizeextrasmall" zlabel="Apps Size xs" zchoices="$root.Settings.Select.SizesXS" zmodel="$root.Settings.Settings.Visibility.AppsSizeExtraSmall"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="appssizesmall" zid="appssizesmall" zlabel="Apps Size sm" zchoices="$root.Settings.Select.SizesSM" zmodel="$root.Settings.Settings.Visibility.AppsSizeSmall"></zackry-form-group-select>
+                    <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" zname="appssizemedium" zid="appssizemedium" zlabel="Apps Size md" zchoices="$root.Settings.Select.SizesMD" zmodel="$root.Settings.Settings.Visibility.AppsSizeMedium"></zackry-form-group-select>
 
                     <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="number" zname="welcomepagetimer" zid="welcomepagetimer" zlabel="Welcome page timer in seconds"   zmodel="$root.Settings.Settings.Visibility.WelcomePageTimer"></zackry-form-group-input>
 
@@ -82,18 +96,14 @@
                 </zackry-panel>
             </form>
 
-            <!--<form>
+            <!--<form class="col-md-12 col-sm-12 col-xs-12">
                 <zackry-panel paneltitle="Add Item" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <zackry-form-group-input ng-repeat="(key, value) in $root.Settings.Settings.Visibility"  zisempty="true" zclass="col-md-4" zname="{{key}}" zid="{{key}}" zlabel="{{key}}"    zmodel="$root.Settings.Settings.Visibility[key]"></zackry-form-group-input>
                 </zackry-panel>
             </form>-->
+             
 
-
-
-
-            
-
-            <form>
+            <form class="col-md-12 col-sm-12 col-xs-12">
                 <zackry-panel paneltitle="Update Passwords Details" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                     <!--<zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="oldpassword" zid="oldpassword" zlabel="Old Password"   zmodel="$root.Password.Passwords.OldPassword"></zackry-form-group-input>-->
                     <zackry-form-group-input zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4" ztype="password" zname="password" zid="password" zlabel="Password"   zmodel="$root.Password.Passwords.Password"></zackry-form-group-input>

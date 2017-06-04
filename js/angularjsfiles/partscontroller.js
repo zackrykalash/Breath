@@ -19,7 +19,7 @@ appManager.controller('headController', [
         var welcomePageTimerWatch = null;
         var isDataLoaded = false;
 
-        
+
         $rootScope.timeClock = moment().format(DateTimeFormats.DisplayTime);
         $rootScope.dateTimeClock = moment().format(DateTimeFormats.DisplayDateTime);
         $rootScope.dateClock = moment().format(DateTimeFormats.DisplayDate);
@@ -32,7 +32,7 @@ appManager.controller('headController', [
             $rootScope.ampmQuote = moment().format(DateTimeFormats.InputAmPm);
             $rootScope.hourQuote = moment().format(DateTimeFormats.InputHour);
         }, 1000);
-         
+
 
         $rootScope.RefreshData = function () {
             var failSaveInt = 5;
@@ -56,8 +56,9 @@ appManager.controller('headController', [
                 $rootScope.Notes.Get();
                 //$rootScope.History.Search();
                 $rootScope.ChromeApps.GetApps();
-                //$rootScope.DownloadManager.Search();
+                $rootScope.DownloadManager.SearchInterval();
                 $rootScope.InsertCSS.LoadCss();
+                $rootScope.BlockedUrls.Get();
                 failSaveInt--;
                 if (failSaveInt <= 0) {
                     $rootScope.Angular.interval.cancel(stopInterval);
@@ -278,7 +279,7 @@ appManager.controller('headController', [
                 });
             }
             , SaveDynamic: function (title, dynamic, chromeKey, type) {
-                if (!type) { type = "success";}
+                if (!type) { type = "success"; }
                 var setObjct = {};
                 setObjct[chromeKey] = dynamic;
                 chrome.storage.local.set(setObjct, function () {
@@ -294,6 +295,7 @@ appManager.controller('headController', [
             }
             , EmptyEverything: function () {
                 $rootScope.Shipment.EmptyShipment();
+                $rootScope.BlockedUrls.EmptyBlockedUrls();
             }
         };
 
@@ -590,7 +592,7 @@ appManager.controller('headController', [
                 Guid: function () {
                     return ($rootScope.Utils.RandomBase16() + $rootScope.Utils.RandomBase16() + "-" + $rootScope.Utils.RandomBase16() + "-4" + $rootScope.Utils.RandomBase16().substr(0, 3) + "-" + $rootScope.Utils.RandomBase16() + "-" + $rootScope.Utils.RandomBase16() + $rootScope.Utils.RandomBase16() + $rootScope.Utils.RandomBase16()).toLowerCase();
                 }
-                , RandomString: function (length,groups,char) {
+                , RandomString: function (length, groups, char) {
                     if (!length)
                     { length = 10; }
                     if (!char)
@@ -1608,6 +1610,7 @@ appManager.controller('headController', [
                    , Local: "false"
                    , LiveEdit: "false"
                    , Shipment: "false"
+                   , BlockedUrls: "true"
                    , Colors: "true"
                    , Youtube: "false"
                    , WelcomeScreen: "true"
@@ -1620,7 +1623,11 @@ appManager.controller('headController', [
                    , LinksSizeExtraSmall: "col-xs-3"
                    , LinksSizeSmall: "col-sm-2"
                    , LinksSizeMedium: "col-md-1"
+                   , AppsSizeExtraSmall: "col-xs-3"
+                   , AppsSizeSmall: "col-sm-2"
+                   , AppsSizeMedium: "col-md-1"
                    , WelcomePageTimer: 30
+                    ,Downloads:"false"
                 }
             }
             , DefaultSettings: {
@@ -1641,6 +1648,7 @@ appManager.controller('headController', [
                    , Local: "false"
                    , LiveEdit: "false"
                    , Shipment: "false"
+                   , Colors: "BlockedUrls"
                    , Colors: "true"
                    , Youtube: "false"
                    , WelcomeScreen: "true"
@@ -1653,7 +1661,11 @@ appManager.controller('headController', [
                    , LinksSizeExtraSmall: "col-xs-3"
                    , LinksSizeSmall: "col-sm-2"
                    , LinksSizeMedium: "col-md-1"
+                   , AppsSizeExtraSmall: "col-xs-3"
+                   , AppsSizeSmall: "col-sm-2"
+                   , AppsSizeMedium: "col-md-1"
                    , WelcomePageTimer: 30
+                    ,Downloads:"false"
                 }
             }
             , Select: {
@@ -1697,6 +1709,12 @@ appManager.controller('headController', [
                 chrome.storage.local.get("Visibility", function (visibility) {
                     if (visibility.Visibility != undefined && visibility.Visibility != null) {
                         $rootScope.Settings.Settings.Visibility = visibility.Visibility;
+                        $rootScope.Settings.LinksSizeExtraSmall = parseInt($rootScope.Settings.Settings.Visibility.LinksSizeExtraSmall.replace("col-xs-",""));
+                        $rootScope.Settings.LinksSizeSmall = parseInt($rootScope.Settings.Settings.Visibility.LinksSizeSmall.replace("col-sm-", ""));
+                        $rootScope.Settings.LinksSizeMedium = parseInt($rootScope.Settings.Settings.Visibility.LinksSizeMedium.replace("col-md-", ""));
+                        $rootScope.Settings.AppsSizeExtraSmall = parseInt($rootScope.Settings.Settings.Visibility.AppsSizeExtraSmall.replace("col-xs-", ""));
+                        $rootScope.Settings.AppsSizeSmall = parseInt($rootScope.Settings.Settings.Visibility.AppsSizeSmall.replace("col-sm-", ""));
+                        $rootScope.Settings.AppsSizeMedium = parseInt($rootScope.Settings.Settings.Visibility.AppsSizeMedium.replace("col-md-", ""));
                     }
                 });
             }
@@ -1719,7 +1737,70 @@ appManager.controller('headController', [
             }
             , RemoveLinks: function () {
             }
+            , LinksOptionsExtraSmall: {
+                floor: 0,
+                ceil: 12,
+                step: 1,
+                showSelectionBar: true,
+                onChange: function (sliderId, modelValue, highValue, pointerType) {
+                    $rootScope.Settings.Settings.Visibility.LinksSizeExtraSmall = "col-xs-" + modelValue;
+                }
+            }
+            , LinksOptionsSmall: {
+                floor: 0,
+                ceil: 12,
+                step: 1,
+                showSelectionBar: true,
+                onChange: function (sliderId, modelValue, highValue, pointerType) {
+                    $rootScope.Settings.Settings.Visibility.LinksSizeSmall = "col-sm-" + modelValue;
+
+                }
+            }
+            , LinksOptionsMedium: {
+                floor: 0,
+                ceil: 12,
+                step: 1,
+                showSelectionBar: true,
+                onChange: function (sliderId, modelValue, highValue, pointerType) {
+                    $rootScope.Settings.Settings.Visibility.LinksSizeMedium = "col-md-" + modelValue;
+                }
+            }
+            , AppsOptionsExtraSmall: {
+                floor: 0,
+                ceil: 12,
+                step: 1,
+                showSelectionBar: true,
+                onChange: function (sliderId, modelValue, highValue, pointerType) {
+                    $rootScope.Settings.Settings.Visibility.AppsSizeExtraSmall = "col-xs-" + modelValue;
+                }
+            }
+            , AppsOptionsSmall: {
+            floor: 0,
+            ceil: 12,
+            step: 1,
+            showSelectionBar: true,
+            onChange: function (sliderId, modelValue, highValue, pointerType) {
+                $rootScope.Settings.Settings.Visibility.AppsSizeSmall = "col-sm-" + modelValue;
+
+            }
+        }
+            , AppsOptionsMedium: {
+            floor: 0,
+            ceil: 12,
+            step: 1,
+            showSelectionBar: true,
+            onChange: function (sliderId, modelValue, highValue, pointerType) {
+                $rootScope.Settings.Settings.Visibility.AppsSizeMedium = "col-md-" + modelValue;
+            }
+            }
+            , LinksSizeExtraSmall: 0
+            , LinksSizeSmall: 0
+            , LinksSizeMedium: 0
+            , AppsSizeExtraSmall: 0
+            , AppsSizeSmall: 0
+            , AppsSizeMedium: 0
         };
+
 
         $rootScope.Welcome = {
             Show: function () {
@@ -1840,9 +1921,9 @@ appManager.controller('headController', [
               }
           }
         , QuoteWrapper: function () {
-                return ($rootScope.Settings.Settings.User.FirstName) ?
-             $rootScope.Welcome.Quote() + " " + $rootScope.Settings.Settings.User.FirstName
-                    : $rootScope.Welcome.Quote();
+            return ($rootScope.Settings.Settings.User.FirstName) ?
+         $rootScope.Welcome.Quote() + " " + $rootScope.Settings.Settings.User.FirstName
+                : $rootScope.Welcome.Quote();
         }
         };
 
@@ -2023,7 +2104,7 @@ appManager.controller('headController', [
             , Tags: []
             }
             , IsValid: function () {
-              return  ($rootScope.Check.IsStringFilled($rootScope.Notes.Note.Value))
+                return ($rootScope.Check.IsStringFilled($rootScope.Notes.Note.Value))
             }
             , NotValid: function () {
                 return !$rootScope.Notes.IsValid();
@@ -2055,8 +2136,7 @@ appManager.controller('headController', [
             , AddAlarm: function (value) {
                 chrome.alarms.get(value.Id, function (alarm) {
                     if (!alarm) {
-                        if (!!value.Date)
-                        {
+                        if (!!value.Date) {
                             chrome.alarms.create(value.Id, { when: new Date(value.Date).getTime() });
                         }
                         else {
@@ -2089,12 +2169,12 @@ appManager.controller('headController', [
                 });
             }
             , RemoveAll: function () {
-                 $rootScope.Loader.PageLoader.Show();
-                 chrome.storage.local.remove("Notes", function () {
-                     $rootScope.Notify.Notification(null, "Notes deleted.", $rootScope.Notify.NotifyType.Warning);
-                     $rootScope.RefreshData();
-                 });
-             }
+                $rootScope.Loader.PageLoader.Show();
+                chrome.storage.local.remove("Notes", function () {
+                    $rootScope.Notify.Notification(null, "Notes deleted.", $rootScope.Notify.NotifyType.Warning);
+                    $rootScope.RefreshData();
+                });
+            }
             , Remove: function (value) {
                 var doesExist = $rootScope.Check.FindObjectInArrayOfObjects($rootScope.Notes.Notes, value, null, true);
                 if (angular.isNumber(doesExist)) {
@@ -2152,7 +2232,7 @@ appManager.controller('headController', [
         $rootScope.Sounds = {
             MilitaryTelephone: ngAudio.load("audio/military_telephone.mp3")
         };
-        
+
         $rootScope.History = {
             Search: function () {
                 $rootScope.History.Histories = [];
@@ -2206,31 +2286,36 @@ appManager.controller('headController', [
             }
             , GetApps: function () {
                 $rootScope.ChromeApps.AppList = [];
-                chrome.management.getAll(function (info) {
-                    for (var i = 0; i < info.length; i++) {
-                        var app = angular.copy(info[i]);
-                        if (app.isApp && app.enabled) {
-                            var tempApp = {
-                                AppLaunchUrl: app.appLaunchUrl
-                                , AvailableLaunchTypes: app.availableLaunchTypes
-                                , Description: app.description
-                                , HomepageUrl: app.homepageUrl
-                                , Icons: ""
-                                , Id: app.id
-                                , LaunchType: app.launchType
-                                , Name: app.name
-                                , ShortName: app.shortName
-                            };
-                            var size = 0;
-                            angular.forEach(app.icons, function (value, key) {
-                                if (value.size > size) {
-                                    tempApp.Icons = value.url;
-                                }
-                            });
-                            $rootScope.ChromeApps.AppList.push(tempApp);
+                if ($rootScope.ChromeApps.Visibility()) {
+                    chrome.management.getAll(function (info) {
+                        for (var i = 0; i < info.length; i++) {
+                            var app = angular.copy(info[i]);
+                            if (app.isApp && app.enabled) {
+                                var tempApp = {
+                                    AppLaunchUrl: app.appLaunchUrl
+                                    , AvailableLaunchTypes: app.availableLaunchTypes
+                                    , Description: app.description
+                                    , HomepageUrl: app.homepageUrl
+                                    , Icons: ""
+                                    , Id: app.id
+                                    , LaunchType: app.launchType
+                                    , Name: app.name
+                                    , ShortName: app.shortName
+                                };
+                                var size = 0;
+                                angular.forEach(app.icons, function (value, key) {
+                                    if (value.size > size) {
+                                        tempApp.Icons = value.url;
+                                    }
+                                });
+                                $rootScope.ChromeApps.AppList.push(tempApp);
+                            }
                         }
-                    }
-                });
+                    });
+                }
+            }
+            , Visibility: function () {
+                return $rootScope.Settings.Settings.Visibility.AppList;
             }
         };
 
@@ -2284,14 +2369,19 @@ appManager.controller('headController', [
         $rootScope.DownloadManager = {
             Search: function () {
                 //"in_progress", "interrupted", or "complete"
-                $rootScope.DownloadManager.Downloads = [];
-                $rootScope.DownloadManager.DownloadsInProgress = [];
-                $rootScope.DownloadManager.DownloadsInterrupted = [];
-                $rootScope.DownloadManager.DownloadsComplete = [];
-                $rootScope.DownloadManager.DownloadsPaused = [];
+              
+
+
                 var downloadsTodayeDate = new Date();
-                downloadsTodayeDate.setDate(downloadsTodayeDate.getDate() - 5);
+                downloadsTodayeDate.setDate(downloadsTodayeDate.getDate() - $rootScope.DownloadManager.DownloadDays);
                 chrome.downloads.search({}, function (results) {
+                    var _Downloads = [];
+                    var _DownloadsInProgress = [];
+                    var _DownloadsInterrupted = [];
+                    var _DownloadsComplete = [];
+                    var _DownloadsPaused = [];
+
+
                     angular.forEach(results, function (value, key) {
                         var download = angular.copy($rootScope.DownloadManager.Download);
                         download.BytesReceived = value.bytesReceived;
@@ -2312,23 +2402,31 @@ appManager.controller('headController', [
                         download.TotalBytes = value.totalBytes;
                         download.URL = value.url;
                         download.EstimatedEndTime = value.estimatedEndTime;
+                        download.Progress = $rootScope.DownloadManager.DownloadProgress(value.bytesReceived, value.totalBytes);
+
                         if (download.State == "complete") {
-                            $rootScope.DownloadManager.DownloadsComplete.push(download);
+                            _DownloadsComplete.push(download);
                         }
                         if (download.State == "interrupted") {
-                            $rootScope.DownloadManager.DownloadsInterrupted.push(download);
+                            _DownloadsInterrupted.push(download);
                         }
                         if (download.State == "in_progress") {
                             if (download.Paused) {
-                                $rootScope.DownloadManager.DownloadsPaused.push(download);
+                                _DownloadsPaused.push(download);
                             } else {
-                                $rootScope.DownloadManager.DownloadsInProgress.push(download);
+                                _DownloadsInProgress.push(download);
                             }
                         }
-                        $rootScope.DownloadManager.Downloads.push(download);
+                        _Downloads.push(download);
                     });
-                })
+                    $rootScope.DownloadManager.Downloads = _Downloads;
+                    $rootScope.DownloadManager.DownloadsInProgress = _DownloadsInProgress;
+                    $rootScope.DownloadManager.DownloadsInterrupted = _DownloadsInterrupted;
+                    $rootScope.DownloadManager.DownloadsComplete = _DownloadsComplete;
+                    $rootScope.DownloadManager.DownloadsPaused = _DownloadsPaused;
+                });
             }
+            , DownloadDays: 5
             , Downloads: []
             , DownloadsInProgress: []
             , DownloadsInterrupted: []
@@ -2353,36 +2451,69 @@ appManager.controller('headController', [
                 TotalBytes: 0,
                 URL: "",
                 EstimatedEndTime: "",
+                Progress: 0,
             }
-            , Pause: function (id) {
-                chrome.downloads.pause(id, function() {})
+            , Pause: function (download) {
+                if (download.State == 'in_progress' && !download.CanResume) {
+                    chrome.downloads.pause(download.Id, function () { })
+                }
             }
-            , Resume: function (id) {
-                chrome.downloads.resume(id, function () { })
+            , Resume: function (download) {
+                if (download.State == 'in_progress' && download.CanResume) {
+                    chrome.downloads.resume(download.Id, function () { })
+                }
             }
-            , Cancel: function (id) {
-                chrome.downloads.cancel(id, function () { })
+            , Cancel: function (download) {
+                chrome.downloads.cancel(download.Id, function () { })
             }
-            , GetFileIcon: function (id) {
-                chrome.downloads.getFileIcon(id, function (iconURL) { })
+            , GetFileIcon: function (download) {
+                chrome.downloads.getFileIcon(download.Id, function (iconURL) {
+
+                })
             }
-            , Open: function (id) {
-                chrome.downloads.open(id)
+            , Open: function (download) {
+                if (download.State == "complete") {
+                    chrome.downloads.open(download.Id);
+                }
             }
-            , Show: function (id) {
-                chrome.downloads.show(id)
+            , Show: function (download) {
+                if (download.State == "complete") {
+                    chrome.downloads.open(download.Id)
+                }
             }
             , ShowDefaultFolder: function () {
                 chrome.downloads.showDefaultFolder()
             }
-            , Erase: function () {
-                //chrome.downloads.showDefaultFolder()
+            , Erase: function (download) {
+                chrome.downloads.erase({ id: download.Id }, function (erasedIds) {
+
+                });
+            }
+            , Delete: function (download) {
+                if (download.State == "complete") {
+                    chrome.downloads.removeFile(download.Id, function () {
+
+                    });
+                }
             }
             , DownloadProgress: function (bytesReceived, totalBytes) {
                 if (!!bytesReceived && bytesReceived >= 0 && !!totalBytes && totalBytes > 0)
                 { return (100 * bytesReceived) / totalBytes; }
                 else
-                { return 0;}
+                { return 0; }
+            }
+            , SearchInterval: function () {
+                if ($scope.Settings.Settings.Visibility.Downloads == "true") {
+                    $scope.stopDownloadInterval = $interval(function () {
+                        if ($state.current.name == "home")
+                        {
+                            $rootScope.DownloadManager.Search();
+                        }
+                        if ($scope.Settings.Settings.Visibility.Downloads == "false") {
+                            $scope.stopDownloadInterval();
+                        }
+                    }, 1000);
+                }
             }
         };
 
@@ -2421,12 +2552,71 @@ appManager.controller('headController', [
             }
         };
 
+        $rootScope.BlockedUrls = {
+            BlockedUrls: [],
+            BlockedUrl: {
+                Title:""
+                ,Value:""
+                , Whole: "false"
+            },
+            IsEmpty: function () {
+                return (!$rootScope.Check.IsStringFilled($rootScope.BlockedUrls.BlockedUrl.Title)
+                 || !$rootScope.Check.IsStringFilled($rootScope.BlockedUrls.BlockedUrl.Value));
+            },
+            Save: function () {
+                $rootScope.Loader.PageLoader.Show();
+                var aBlockedUrlsLoading = document.createElement('a');
+                aBlockedUrlsLoading.href = $rootScope.BlockedUrls.BlockedUrl.Value;
+                var finalUrlBlockedUrlsLoading = aBlockedUrlsLoading.protocol + '//' + aBlockedUrlsLoading.hostname;
+
+                if ($rootScope.BlockedUrls.IsEmpty()) {
+                    $rootScope.Notify.FaildToAdd("Blocked link");
+                    $rootScope.Loader.PageLoader.Hide();
+                    return false;
+                }
+                if (!$rootScope.Links.TestRegex(finalUrlBlockedUrlsLoading)) {
+                    $rootScope.Notify.Notification(null, "URL has wrong format, it should start with http:// or https://", $rootScope.Notify.NotifyType.Error);
+                    $rootScope.Loader.PageLoader.Hide();
+                    return false;
+                }
+                $rootScope.BlockedUrls.BlockedUrl.Value = finalUrlBlockedUrlsLoading;
+                if (!$rootScope.BlockedUrls.BlockedUrls[finalUrlBlockedUrlsLoading])
+                {
+                    $rootScope.BlockedUrls.BlockedUrls[finalUrlBlockedUrlsLoading] = angular.copy($rootScope.BlockedUrls.BlockedUrl);
+                    $rootScope.Save.SaveDynamic("Blocked Urls", $rootScope.BlockedUrls.BlockedUrls, "BlockedUrls");
+                }
+                $rootScope.BlockedUrls.BlockedUrl.Title = "";
+                $rootScope.BlockedUrls.BlockedUrl.Value = "";
+                $rootScope.BlockedUrls.BlockedUrl.Whole = "false";
+            },
+            Remove: function (value) {
+                $rootScope.BlockedUrls.BlockedUrls[value.Value] = undefined;
+                $rootScope.Save.SaveDynamic("Blocked Urls", $rootScope.BlockedUrls.BlockedUrls, "BlockedUrls");
+            },
+            RemoveALL: function (value) {
+
+            },
+            Get: function () {
+                chrome.storage.local.get("BlockedUrls", function (blockedUrls) {
+                    if (!!blockedUrls.BlockedUrls) {
+                        $rootScope.BlockedUrls.BlockedUrls = blockedUrls.BlockedUrls;
+                    }
+                });
+            },
+            EmptyBlockedUrls: function () {
+                $rootScope.BlockedUrls.BlockedUrl.Title = "";
+                $rootScope.BlockedUrls.BlockedUrl.Value = "";
+                $rootScope.BlockedUrls.BlockedUrl.Whole = "false";
+                $rootScope.BlockedUrls.BlockedUrl.Enabled = "true";
+            }
+        };
+
 
         //chrome.tabs.getAllInWindow(function (tabs) {
         //    console.log(tabs.length)
         //    console.log(tabs)
         //    chrome.tabs.create({ index: 0, active: true, selected: true }, function (tab) {
-            
+
         //    });
         //});
 
@@ -2540,8 +2730,8 @@ appManager.controller('headController', [
         $rootScope.Welcome.Show();
         $rootScope.RefreshData();
         initialize();
-       
- 
+
+
         //chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         //    console.log(tabId);
         //    console.log(changeInfo);
@@ -2551,15 +2741,38 @@ appManager.controller('headController', [
 
         //$rootScope.Notes.ClearAllAlarm();
 
+
+
+
+        //chrome.storage.local.get("Icons", function (icons) {
+        //    console.log(icons.Icons);
+        //});
+
+
+
+        //var setObjct = {}; setObjct["BlockedUrls"] = {
+        //    "https://9gag.com":{Whole:true}
+        //};
+        //chrome.storage.local.set(setObjct, function () {/*console.log("Saved");*/ });
+
+
+
+
+
+
+        //END **** END **** END **** END **** END **** END
+        //END **** END **** END **** END **** END **** END
+        //END **** END **** END **** END **** END **** END
+        //END **** END **** END **** END **** END **** END
         //END **** END **** END **** END **** END **** END
         //END **** END **** END **** END **** END **** END
         //END **** END **** END **** END **** END **** END
         //END **** END **** END **** END **** END **** END
     }]);
 
- 
- 
 
 
- 
+
+
+
 

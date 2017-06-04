@@ -5,8 +5,8 @@
             <li class="dropdown ">
                 <a class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Links <span class="caret"></span></a>
                 <ul class="dropdown-menu ">
-                    <li><a ui-sref="addlink">Add Link</a></li>
-                    <li><a ui-sref="editlinks">Manage Link</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="addlink">Add Link</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="editlinks">Manage Link</a></li>
                     <!--<li role="separator" class="divider"></li>-->
                 </ul>
             </li>
@@ -17,28 +17,29 @@
             <li class="dropdown" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.Shipment)">
                 <a class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shipment <span class="caret"></span></a>
                 <ul class="dropdown-menu ">
-                    <li><a ui-sref="addshipment">Add Shipment</a></li>
-                    <li><a ui-sref="shipment">Shipment</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="addshipment">Add Shipment</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="shipment">Shipment</a></li>
                     <!--<li role="separator" class="divider"></li>-->
                 </ul>
             </li>
+            <li class="" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.BlockedUrls)"><a ui-sref="blockedurls">blocked Urls</a></li>
             <li class="" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.Colors)"><a ui-sref="colors">Colors</a></li>
             <li class="dropdown" ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.Youtube)">
                 <a class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Youtube <span class="caret"></span></a>
                 <ul class="dropdown-menu ">
-                    <li><a ui-sref="addyoutube">Add Youtube Video</a></li>
-                    <li><a ui-sref="youtube">Youtube Videos</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="addyoutube">Add Youtube Video</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="youtube">Youtube Videos</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notes <span class="caret"></span></a>
                 <ul class="dropdown-menu ">
-                    <li><a ui-sref="addnotes">Add Note</a></li>
-                    <li><a ui-sref="notes">Notes</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="addnotes">Add Note</a></li>
+                    <li><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="notes">Notes</a></li>
                 </ul>
             </li>
-            <li class=""><a ui-sref="settings">Settings</a></li>
-            <li class=""><a  href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/breath-angular-tab/bhjojlfiehhcmfmbhkmjpopcfdnbomhk" target="_blank">Facebook</a></li>
+            <li class=""><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}" ui-sref="settings">Settings</a></li>
+            <li class=""><a  class="{{$root.Colors.Background + ' ' + $root.Colors.Opacity + ' ' + $root.Colors.Text}}"  href="https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/breath-angular-tab/bhjojlfiehhcmfmbhkmjpopcfdnbomhk" target="_blank">Facebook</a></li>
             <!--<li class=""><a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://chrome.google.com/webstore/detail/breath-angular-tab/bhjojlfiehhcmfmbhkmjpopcfdnbomhk', 'facebook-share-dialog', 'width=626,height=436'); return false;">Facebook</a></li>-->
         </zackry-nav>
     </div>

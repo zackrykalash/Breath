@@ -1,0 +1,5 @@
+﻿<div>
+    <select ng-model="day" ng-change="onDayChange(day)" ng-options="day.value as day.title for day in days"></select>
+    <select ng-model="month" ng-change="onMonthChange(month)" ng-options="month.value as month.title for month in months"></select>
+    <select ng-model="year" ng-change="onYearChange(year)" ng-options="year.value as year.title for year in years"></select>
+</div>

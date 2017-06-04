@@ -20,9 +20,9 @@
     <!-- END OF META DATA-->
 
 
-    <link media='all' rel='stylesheet' type='text/css' href='./minified_backup/styles_oneline.css' />
+    <link media='all' rel='stylesheet' type='text/css' href='./minified/styles.css' />
     <link media='all' rel='stylesheet' type='text/css' href='./stylesheets/style.css' />
-    <script type='text/javascript' src='./minified_backup/javascripts.js'></script>
+    <script type='text/javascript' src='./minified/javascripts.js'></script>
     <script type='text/javascript' src='./js/main.js'></script>
 
     <script type='text/javascript' src='./js/angularjsfiles/app.js'></script>
@@ -37,7 +37,7 @@
 </head>
 <body class="container-fluid {{$root.Colors.BodyBackgrounds}}" ng-app="appManager" ng-controller="headController">
     <style type="text/css">
-        html, .welcomescreencontainer, .modal-content {
+        html, .welcomescreencontainer {
             background-image: url({{$root.Background.BackgroundUrl}});
         }
         /*.modal-content {
@@ -45,25 +45,13 @@
         }*/
     </style>
 
-    <!--<div class="bs-component top-notification">
-        <div class="alert alert-dismissible alert-warning">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <h4>Warning!</h4>
-
-            <p>
-                Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna,
-                <a href="javascript:void(0)" class="alert-link">vel scelerisque nisl consectetur et</a>.
-            </p>
-        </div>
-    </div>-->
 
     <zackry-page-loader zif="($root.Loader.PageLoader.IsVisible())"></zackry-page-loader>
     <div ng-show="$root.Utils.ParseBool($root.Settings.Settings.Visibility.WelcomeScreen)" ng-include="'/pages/welcome.html'"></div>
     <!--<div ng-include="'/pages/svglines.html'"></div>-->
     <div class="mother-container">
-        <div ng-include="'/pages/navbar.html'"></div>
-        <br />
-        <div class="container-fluid">
+        <div ng-include="'/pages/navbar.html'" class="navbar-div"></div>
+        <div class="container-fluid body-container">
             <!--ADD NG VIEW//START-->
             <div class="container" ui-view></div>
             <!--ADD NG VIEW//END-->

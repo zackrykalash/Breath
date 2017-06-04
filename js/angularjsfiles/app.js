@@ -21,4 +21,5 @@ var appManager = angular.module('appManager', [
     , 'ui.bootstrap.datetimepicker'
     , 'ngAudio'
     , 'rzModule'
+    , 'ui.select'
 ]);

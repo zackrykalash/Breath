@@ -194,7 +194,7 @@ audio, canvas, progress, video {
 
 .progress {
   position: relative;
-  height: 4px;
+  /*height: 4px;*/
   display: block;
   width: 100%;
   background-color: #acece6;

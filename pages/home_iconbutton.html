@@ -41,14 +41,14 @@
                 <zackry-clear-floats></zackry-clear-floats>
                 <hr class="form-horizontal" />
 
-                <div class="row">
+                <div class="row" ng-show="($root.ChromeApps.Visibility())">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-2 height115px {{$root.Colors.Text}}" ng-repeat="app in $root.ChromeApps.AppList" title="{{app.Description}}">
+                            <div class="col-md-2 col-sm-3 col-xs-4 height150px cursor-pointer {{$root.Colors.Text}}" ng-repeat="app in $root.ChromeApps.AppList" title="{{app.Description}}">
                                 <div class="app-list-group">
-                                    <div class="app-list-group-item cursor-pointer" ng-click="$root.ChromeApps.LaunchApp(app.Id)">
+                                    <div class="app-list-group-item" ng-click="$root.ChromeApps.LaunchApp(app.Id)">
                                         <div class="app-row-picture">
-                                            <img class="circle" src="{{app.Icons}}" alt="icon">
+                                            <img class="circle" ng-src="{{app.Icons}}">
                                         </div>
                                         <div class="app-row-content">
                                             <h4 class="list-group-item-heading {{$root.Colors.Text}}">{{app.Name}}</h4>

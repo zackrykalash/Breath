@@ -1,7 +1,11 @@
-/*! angularjs-slider - v6.1.1 - 
- (c) Rafal Zajac <rzajac@gmail.com>, Valentin Hervieu <valentin@hervieu.me>, Jussi Saarivirta <jusasi@gmail.com>, Angelin Sirbu <angelin.sirbu@gmail.com> - 
- https://github.com/angular-slider/angularjs-slider - 
- 2017-04-23 */
+/**
+ * Angular JS slider directive
+ *
+ * (c) Rafal Zajac <rzajac@gmail.com>
+ * http://github.com/rzajac/angularjs-slider
+ *
+ * Licensed under the MIT license
+ */
 /*jslint unparam: true */
 /*global angular: false, console: false, define, module */
 (function(root, factory) {
@@ -110,7 +114,7 @@
     return factory;
   })
 
-  .factory('rzThrottle', ['$timeout', function($timeout) {
+  .factory('rzThrottle', function($timeout) {
     /**
      * rzThrottle
      *
@@ -154,9 +158,9 @@
         return result;
       };
     }
-  }])
+  })
 
-  .factory('RzSlider', ['$timeout', '$document', '$window', '$compile', 'RzSliderOptions', 'rzThrottle', function($timeout, $document, $window, $compile, RzSliderOptions, rzThrottle) {
+  .factory('RzSlider', function($timeout, $document, $window, $compile, RzSliderOptions, rzThrottle) {
     'use strict';
 
     /**
@@ -2274,9 +2278,9 @@
     };
 
     return Slider;
-  }])
+  })
 
-  .directive('rzslider', ['RzSlider', function(RzSlider) {
+  .directive('rzslider', function(RzSlider) {
     'use strict';
 
     return {
@@ -2305,7 +2309,7 @@
         scope.slider = new RzSlider(scope, elem); //attach on scope so we can test it
       }
     };
-  }]);
+  });
 
   // IDE assist
 
@@ -2340,14 +2344,7 @@
    * @property {boolean} trailing
    */
 
-  module.run(['$templateCache', function($templateCache) {
-  'use strict';
-
-  $templateCache.put('rzSliderTpl.html',
-    "<div class=rzslider><span class=rz-bar-wrapper><span class=rz-bar></span></span> <span class=rz-bar-wrapper><span class=\"rz-bar rz-selection\" ng-style=barStyle></span></span> <span class=\"rz-pointer rz-pointer-min\" ng-style=minPointerStyle></span> <span class=\"rz-pointer rz-pointer-max\" ng-style=maxPointerStyle></span> <span class=\"rz-bubble rz-limit rz-floor\"></span> <span class=\"rz-bubble rz-limit rz-ceil\"></span> <span class=rz-bubble></span> <span class=rz-bubble></span> <span class=rz-bubble></span><ul ng-show=showTicks class=rz-ticks><li ng-repeat=\"t in ticks track by $index\" class=rz-tick ng-class=\"{'rz-selected': t.selected}\" ng-style=t.style ng-attr-uib-tooltip=\"{{ t.tooltip }}\" ng-attr-tooltip-placement={{t.tooltipPlacement}} ng-attr-tooltip-append-to-body=\"{{ t.tooltip ? true : undefined}}\"><span ng-if=\"t.value != null\" class=rz-tick-value ng-attr-uib-tooltip=\"{{ t.valueTooltip }}\" ng-attr-tooltip-placement={{t.valueTooltipPlacement}}>{{ t.value }}</span> <span ng-if=\"t.legend != null\" class=rz-tick-legend>{{ t.legend }}</span></li></ul></div>"
-  );
-
-}]);
+  /*templateReplacement*/
 
   return module.name
 }));

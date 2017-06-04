@@ -1,0 +1,12 @@
+﻿<div>
+    <select ng-model="type" ng-change="onTypeChange(type)" ng-options="calendare.value as calendare.title for calendare in ngCalendars"></select>
+    <div ng-repeat="calendare in ngCalendars" ng-if="calendare.value == type">
+        <date-picker ng-model="ngModel" ng-calendar="calendare.value" ng-object="ngObject" ng-old-calendar="ngCalendar" ng-oldest-year="ngOldestYear" ng-yougest-year="ngYougestYear"></date-picker>
+
+        <h1 ng-bind="ngCalendar"></h1>
+        <h1 ng-bind="ngModel"></h1>
+        <h1 ng-bind="ngModel.Type"></h1>
+        <h1 ng-bind="ngModel.Value"></h1>
+    </div>
+    <h1 ng-bind="ngCalendar"></h1>
+</div>

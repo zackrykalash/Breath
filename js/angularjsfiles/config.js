@@ -14,6 +14,10 @@ appManager
                 url: "/addlink",
                 templateUrl: "pages/addlink.html",
             })
+            .state('blockedurls', {
+                url: "/blockedurls",
+                templateUrl: "pages/blockedUrls.html",
+            })
             .state('editlinks', {
                 url: "/editlinks",
                 templateUrl: "pages/editlinks.html",

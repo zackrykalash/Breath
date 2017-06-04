@@ -1193,3 +1193,380 @@ appManager.directive("zackryConfirmationModal", function () {
 
 
 
+appManager.directive("datePicker", function () {
+    return {
+        restrict: "E",
+        templateUrl: "./templates/DatePisker.html",
+        replace: true,
+        transclude: true,
+        scope: {
+            ngCalendar: '='
+            , ngModel: '='
+            , ngObject: '='
+            , ngOldCalendar: '='
+            , ngOldestYear: '='
+            , ngYougestYear: '='
+        },
+        controller: function ($scope, $rootScope) {
+            var availableCalendars = null, calendar = null, localCalendar = null, shortCalendar = null, today = null;
+            var initDays = function (min, max) {
+                if (!min) { min = 1; }
+                if (!max) { max = 31; }
+                for (var i = min; i <= max ; i++) {
+                    $scope.days.push({ value: i, title: i });
+                }
+            };
+            var initMonth = function (min, max) {
+                if (!min) { min = 1; }
+                if (!max) { max = 12; }
+                for (var i = min; i <= max ; i++) {
+                    $scope.months.push({ value: i, title: shortCalendar[i - 1] });
+                }
+            };
+            var initYears = function (min, max) {
+                if (!min) { min = 1000; }
+                if (!max) { max = 2017; }
+                for (var i = min; i <= max ; i++) {
+                    $scope.years.push({ value: i, title: i });
+                }
+            };
+            var initValue = function () {
+                var _value = null;
+                var _type = (!!$scope.ngModel.Type) ? $scope.ngModel.Type : 'gregorian';
+                if (!!$scope.ngModel) {
+                    if ($scope.ngModel instanceof Date) {
+                        _value = jsDateToCalendar($scope.ngModel);
+                    } else if (typeof $scope.ngModel == "string") {
+                        if (!!$scope.ngOldCalendar) {
+                            _value = stringDateToCalendar($scope.ngModel, $scope.ngOldCalendar);
+                        }
+                        else {
+                            _value = jsDateToCalendar($scope.ngModel);
+                        }
+                    } else if (typeof $scope.ngModel == "object" && !!$scope.ngModel.Value && $scope.ngModel.Value instanceof Date) {
+                        _value = jsDateToCalendar($scope.ngModel.Value);
+                    } else if (typeof $scope.ngModel == "object" && !!$scope.ngModel.Value && typeof $scope.ngModel.Value == "string") {
+                        _value = stringDateToCalendar($scope.ngModel.Value, $scope.ngModel.Type);
+                    } else if (typeof $scope.ngModel == "object" && !!$scope.ngModel._calendar) {
+                        _value = convertDates($scope.ngModel._year, $scope.ngModel._month, $scope.ngModel._day, $scope.ngModel._calendar.local.name.toLowerCase());
+                    } else if (typeof $scope.ngModel == "object" && !!$scope.ngModel.Value && !!$scope.ngModel.Value._calendar) {
+                        _value = convertDates($scope.ngModel.Value._year, $scope.ngModel.Value._month, $scope.ngModel.Value._day, $scope.ngModel.Value._calendar.local.name.toLowerCase());
+                    }
+                    initYearsMonthsDays(_value);
+                    initModel(formatDateInstance(_value));
+                }
+                else {
+                    initModel();
+                }
+            };
+            var initModel = function (value, type) {
+                if (!type) { type = $scope.ngCalendar; }
+                if (!value) { value = ""; }
+                $scope.ngModel = ($scope.ngObject) ? { Type: type, Value: value } : value;
+                broadcast();
+            };
+            var initYearsMonthsDays = function (value) {
+                $scope.day = value._day;
+                $scope.month = value._month;
+                $scope.year = value._year;
+            };
+            var jsDateToCalendar = function (value, cal) {
+                //takes js date, convert to gregorian calendar, the convert it to selected calendar
+                var jsDate = new Date(value);
+                var jd = $.calendars.instance().toJD(jsDate.getFullYear(), jsDate.getMonth() + 1, jsDate.getDate())
+                return calendar.fromJD(jd);
+            };
+            var stringDateToCalendar = function (value, cal) {
+                var valueArray = value.split("/");
+                if (!cal) { cal = $scope.calendar; }
+                var jd = $.calendars.instance(cal).toJD(parseInt(valueArray[2], 10), parseInt(valueArray[0], 10), parseInt(valueArray[1], 10))
+                return calendar.fromJD(jd);
+            };
+            var convertDates = function (day, month, year, from) {
+                //takes year, month, day, calendar from, convert it to selected calendar
+                var jdFrom = $.calendars.instance(from).toJD(year, month, day);
+                return calendar.fromJD(jd);
+            };
+            var formatDateInstance = function (value) {
+                return value.formatDate("mm/dd/yyyy");
+            };
+            var refreshDays = function () {
+                if (!!$scope.month && !!$scope.year) {
+                    var maxDay = calendar.daysInMonth($scope.year, $scope.month);
+                    initDays(1, maxDay);
+                }
+                else {
+                    initDays(1, 31);
+                }
+            };
+            var refreshMonth = function () {
+                if (!!$scope.year && $scope.year == today._year) {
+                    var maxMonth = today.monthOfYear($scope.year);
+                    initMonth(1, maxMonth);
+                }
+                else {
+                    initMonth(1, 12);
+                }
+            };
+            var refreshYear = function () {
+                var minYear = today._year - $scope.ngOldestYear;
+                var maxYear = today._year - $scope.ngYougestYear;
+                if (!!$scope.year && $scope.year < minYear) {
+                    minYear = $scope.year;
+                } else if (!!$scope.year && $scope.year > maxYear) {
+                    maxYear = $scope.year;
+                }
+                initYears(minYear, maxYear);
+            };
+            var init = function () {
+                availableCalendars = ['gregorian', 'taiwan', 'thai', 'julian', 'persian', 'islamic', 'ummalqura', 'hebrew', 'ethiopian', 'coptic', 'nepali', 'nanakshahi', 'mayan'];
+                if (!$scope.ngCalendar || (!!$scope.ngCalendar && availableCalendars.indexOf($scope.ngCalendar) == -1)) { $scope.ngCalendar = 'gregorian'; }
+                if (!$scope.ngOldestYear) { $scope.ngOldestYear = 1000; }
+                if (!$scope.ngYougestYear) { $scope.ngYougestYear = 0; }
+                calendar = $.calendars.instance($scope.ngCalendar);
+                localCalendar = calendar.local;
+                shortCalendar = calendar.local.monthNamesShort;
+                today = calendar.today();
+                $scope.days = [];
+                $scope.months = [];
+                $scope.years = [];
+                initValue();
+                refreshDays();
+                refreshMonth();
+                refreshYear();
+            };
+            var onChange = function (datePart) {
+                if (!!$scope.day && !!$scope.month && !!$scope.year && calendar.isValid($scope.year, $scope.month, $scope.day)) {
+                    initModel(formatDateInstance(calendar.newDate($scope.year, $scope.month, $scope.day)));
+                } else {
+                    initModel();
+                }
+            };
+            var broadcast = function () {
+                $rootScope.$broadcast('DateOfBirthUpdated', { Value: $scope.ngModel, Type: $scope.ngCalendar });
+            };
+            $scope.onDayChange = function (value) {
+                onChange('day');
+            };
+            $scope.onMonthChange = function (value) {
+                onChange('month');
+                refreshDays();
+            };
+            $scope.onYearChange = function (value) {
+                onChange('year');
+                refreshDays();
+            };
+            init();
+        },
+        link: function (scope, elem, attrs) {
+        }
+    };
+});
+
+appManager.directive("datePickerRepeater", function () {
+    return {
+        restrict: "E",
+        templateUrl: "./templates/DatePickerRepeater.html",
+        replace: true,
+        transclude: true,
+        scope: {
+            ngModel: '='
+            , ngCalendars: '='
+            , ngObject: '='
+            , ngOldestYear: '='
+            , ngYougestYear: '='
+        },
+        controller: function ($scope, $rootScope) {
+            $scope.ngCalendar = "";
+            $scope.$on('DateOfBirthUpdated', function (event, args) {
+                $scope.ngModel = args.Value;
+                $scope.ngCalendar = args.Type;
+            });
+        },
+        link: function (scope, elem, attrs) {
+        }
+    };
+});
+
+
+
+
+
+appManager.directive("zackryActionGroup", function () {
+    return {
+        restrict: "E",
+        templateUrl: "./templates/ZackryActionGroup.html",
+        replace: true,
+        transclude: true,
+        scope: {
+            zclass: '@',
+            zid: '@',
+            zlabel: '@',
+            zname: '@',
+            ztype: '@',
+            zhelp: '@',
+            zhref: '@',
+            zdatadismiss: '@',
+            zonclick: '&',
+            zonchange: '&',
+            zshow: '=',
+            zhide: '=',
+            zlinks: '=',
+            zif: '=',
+            zmodel: '=',
+            zpreactions: '=',
+            zpostactions: '=',
+            zdisabled: '='
+        },
+        controller: function ($scope) {
+            if (!$scope.ztype) { $scope.ztype = "btn-default"; }
+
+
+            //$scope.actions = {
+            //    Id: "actions",
+            //    Label: "Refresh Users",
+            //    Type: "btn-default",
+            //    Links: true,
+            //    Action: function () {
+            //        console.log("Primary Action");
+            //    },
+            //    PreDividerActions: [
+            //       {
+            //           Title: "Refresh Disabled",
+            //           Disabled: false,
+            //           Hide: false,
+            //           Action: function () {
+            //               console.log("Hello");
+            //           }
+            //       },
+            //       {
+            //           Title: "Refresh Voided",
+            //           Disabled: false,
+            //           Hide: false,
+            //           Action: function () {
+            //               console.log("Kifak");
+            //           }
+            //       }
+            //    ],
+            //    PostDividerActions: []
+            //};
+
+
+        },
+        link: function (scope, elem, attrs) {
+        }
+    };
+});
+
+
+
+
+appManager.directive("zackryUiMultipleSelect", function () {
+    return {
+        restrict: "E",
+        templateUrl: "./templates/ZackryUIMultipleSelect.html",
+        replace: true,
+        transclude: true,
+        scope: {
+            zclass: '@',
+            ztextclass: '@',
+            zisfocused: '@',
+            zisempty: '@',
+            zid: '@',
+            ztype: '@',
+            zname: '@',
+            zlabel: '@',
+            zmodel: '=',
+            zitems: '=',
+            zshow: '=',
+            zhide: '=',
+            zif: '=',
+            zevent: '=',
+            zonchange: '&',
+            zonclick: '&',
+            zkeyup: '&',
+            zhelp: '@'
+        },
+        controller: function ($scope) {
+            if (!$scope.zmodel || !angular.isArray($scope.zmodel)) {
+                $scope.zmodel = [];
+            }
+
+            $scope.onSelect = function ($item, $model) {
+                if ($scope.zmodel.indexOf($item.Value) == -1) {
+                    $scope.zmodel.push($item.Value);
+                }
+            };
+
+
+            $scope.onRemove = function ($item, $model) {
+                var index = $scope.zmodel.indexOf($item.Value);
+                if (index > -1) {
+                    $scope.zmodel.splice(index, 1);
+                }
+            };
+
+
+        },
+        link: function (scope, elem, attrs) {
+        }
+    };
+});
+
+
+
+
+appManager.directive("zackryUiSelect", function () {
+    return {
+        restrict: "E",
+        templateUrl: "./templates/ZackryUISelect.html",
+        replace: true,
+        transclude: true,
+        scope: {
+            zclass: '@',
+            ztextclass: '@',
+            zisfocused: '@',
+            zisempty: '@',
+            zid: '@',
+            ztype: '@',
+            zname: '@',
+            zlabel: '@',
+            zmodel: '=',
+            zitems: '=',
+            zshow: '=',
+            zhide: '=',
+            zif: '=',
+            zevent: '=',
+            zonchange: '&',
+            zonclick: '&',
+            zkeyup: '&',
+            zhelp: '@'
+        },
+        controller: function ($scope) {
+            if (!$scope.zmodel || !angular.isArray($scope.zmodel)) {
+                $scope.zmodel = "";
+            }
+
+            $scope.onSelect = function ($item, $model) {
+                if (!!$item.Value) {
+                    console.log($item.Value);
+                    $scope.zmodel = $item.Value;
+                }
+            };
+
+            $scope.onRemove = function ($item, $model) {
+                var index = $scope.zmodel.indexOf($item.Value);
+                if (index > -1) {
+                    $scope.zmodel.splice(index, 1);
+                }
+            };
+
+
+        },
+        link: function (scope, elem, attrs) {
+        }
+    };
+});
+
+
+

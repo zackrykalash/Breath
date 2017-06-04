@@ -6,21 +6,24 @@
             <zackry_panel paneltitle="My Links" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
                 <div class="row">
                     <div class="col-md-12">
-                        <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-3" ztype="text" zname="filterlinks" zid="filterlinks" zlabel="Filter your links:" zmodel="linkSearch"></zackry_form_group_input>
-                        <zackry-buttons zclass="col-md-3 col-sm-6 col-xs-6" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="Refresh Links <i class='fa fa-refresh' aria-hidden='true'></i>" zname="refreshlinks" ztype="btn-default" zonclick="$root.RefreshData()"></zackry-buttons>
-                        <!--<zackry-buttons zclass="col-md-3" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="replace" zname="replace" ztype="btn-default"   zonclick="$root.replace()" ></zackry-buttons>-->
-                        <zackry-form-group-toggle zchecked="($root.Links.SecretVisibility)" zclass="col-md-1 col-sm-3 col-xs-3" ztextoff="No" ztexton="Yes" ztype="toggle--push toggle--push--glow" zname="secretvisibility" zid="secretvisibility" zonclick="$root.Links.TuggleSecretVisibility()" zicon="fa-user-secret"></zackry-form-group-toggle>
-                    
-                        <div class="simple-icon-button-contaier col-md-3 col-sm-3 col-xs-3">
-                            <div class="simple-icon-button-group">
-                                <a ng-click="$root.HeaderButtons.MergeWindows()" title="Merge Windows" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-compress"></i></a>
-                                <!--<a ng-click="$root.DownloadManager.Search()" title="Download Manager" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-download"></i></a>-->
-                             </div>
-                            <zackry-clear-floats></zackry-clear-floats>
-                        </div>
-                    
-                         
+                        <div class="row">
+                            <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-3" ztype="text" zname="filterlinks" zid="filterlinks" zlabel="Filter your links:" zmodel="linkSearch"></zackry_form_group_input>
+                            <zackry-buttons zclass="col-md-3 col-sm-6 col-xs-6" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="Refresh Links <i class='fa fa-refresh' aria-hidden='true'></i>" zname="refreshlinks" ztype="btn-default" zonclick="$root.RefreshData()"></zackry-buttons>
+                            <!--<zackry-buttons zclass="col-md-3" zisempty="false" zisfocused="false" zid="refreshlinks" zlabel="replace" zname="replace" ztype="btn-default"   zonclick="$root.replace()" ></zackry-buttons>-->
+                            <zackry-form-group-toggle zchecked="($root.Links.SecretVisibility)" zclass="col-md-1 col-sm-3 col-xs-3" ztextoff="No" ztexton="Yes" ztype="toggle--push toggle--push--glow" zname="secretvisibility" zid="secretvisibility" zonclick="$root.Links.TuggleSecretVisibility()" zicon="fa-user-secret"></zackry-form-group-toggle>
 
+                            <div class="simple-icon-button-contaier col-md-3 col-sm-4 col-xs-6">
+                                <div class="simple-icon-button-group">
+                                    <a ng-click="$root.HeaderButtons.MergeWindows()" title="Merge Windows" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-compress"></i></a>
+                                    <!--<a ng-click="$root.DownloadManager.Search()" title="Download Manager" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-download"></i></a>-->
+                                    <a data-toggle="modal" data-target="#linksizesilder" title="Update Links/Apps Size" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-columns"></i></a>
+                                    <!--<a ng-click="$root.DownloadManager.Search()" title="Download Manager" class="simple-icon-button-action-button shadow simple-icon-button-animate simple-icon-button-grey text-info"><i class="fa fa-download"></i></a>-->
+                                </div>
+                                <zackry-clear-floats></zackry-clear-floats>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
 
@@ -42,16 +45,16 @@
             <hr class="form-horizontal" />
 
 
-            <zackry_panel paneltitle="My Apps" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+            <zackry_panel paneltitle="My Apps" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}" zshow="($root.ChromeApps.Visibility())">
 
-                <div class="row">
+                <div class="row my-apps">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-2 height150px {{$root.Colors.Text}}" ng-repeat="app in $root.ChromeApps.AppList" title="{{app.Description}}">
+                            <div class="{{$root.Settings.Settings.Visibility.AppsSizeExtraSmall + ' ' + $root.Settings.Settings.Visibility.AppsSizeSmall + ' ' + $root.Settings.Settings.Visibility.AppsSizeMedium}} height150px cursor-pointer {{$root.Colors.Text}}" ng-repeat="app in $root.ChromeApps.AppList" title="{{app.Description}}">
                                 <div class="app-list-group">
                                     <div class="app-list-group-item" ng-click="$root.ChromeApps.LaunchApp(app.Id)">
                                         <div class="app-row-picture">
-                                            <img class="circle" src="{{app.Icons}}" alt="icon">
+                                            <img class="circle" ng-src="{{app.Icons}}">
                                         </div>
                                         <div class="app-row-content">
                                             <h4 class="list-group-item-heading {{$root.Colors.Text}}">{{app.Name}}</h4>
@@ -71,6 +74,83 @@
 
 
 
-        </div>
+            <zackry_panel paneltitle="Downloads" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}" zshow="($root.DownloadManager.Downloads.length > 0)">
+
+                <div class="row">
+                    <ul class="{{$root.Colors.Text}}">
+                        <li class="col-md-6 col-sm-6 col-xs-12 downloads-li {{$root.Colors.Text}}" ng-repeat="download in $root.DownloadManager.Downloads track by $index">
+                            <div class="recent-post clearfix">
+                                <h3 class="post-title">
+                                    <a ng-click="$root.DownloadManager.Open(download)" class="cursor-pointer {{$root.Colors.Text}}">{{download.Filename}}</a>
+                                </h3>
+                                <div class="post-meta">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped active" ng-class="{'progress-bar-success': (download.Progress == 100), '': (download.Progress > 66 && download.Progress < 100), 'progress-bar-warning ': (download.Progress > 33 && download.Progress <= 66), 'progress-bar-danger':(download.Progress > 0 && download.Progress <= 33) }" role="progressbar" aria-valuenow="download.Progress" aria-valuemin="0" aria-valuemax="100" style="{{'width:' + download.Progress + '%'}}">
+                                            <span class="sr-only">{{download.Progress + '% Complete'}}</span>
+                                        </div>
+                                    </div>
+                                    <span>
+                                        {{'Progress: ' + download.Progress + '%'}}
+                                        <i class="fa fa-pause text-primary cursor-pointer" ng-show="(download.State == 'in_progress'&& !download.CanResume)" ng-click="$root.DownloadManager.Pause(download)"> Pause Download</i>
+                                        <i class="fa fa-play text-success cursor-pointer" ng-show="(download.State == 'in_progress' && download.CanResume)" ng-click="$root.DownloadManager.Resume(download)"> Resume Download</i>
+                                        <i class="fa fa-remove text-danger cursor-pointer" ng-show="(download.Progress == 100 || download.Progress == 0)" ng-click="$root.DownloadManager.Erase(download)"> Clear Download</i>
+                                        <i class="fa fa-remove text-warning cursor-pointer" ng-show="(download.State == 'in_progress')" ng-click="$root.DownloadManager.Cancel(download)"> Cancel Download</i>
+                                        <i class="fa fa-folder-open text-success cursor-pointer" ng-show="(download.State == 'complete' && download.Exists)" ng-click="$root.DownloadManager.Show(download)"> Open File</i>
+                                        <i class="fa fa-trash text-danger cursor-pointer" ng-show="(download.State == 'complete' && download.Exists)" ng-click="$root.DownloadManager.Delete(download)"> Delete File</i>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </zackry_panel>
+
+
+
+
+                <zackry-clear-floats></zackry-clear-floats>
+                <hr class="form-horizontal" />
+
+
+
+                <zackry-modals modalid="linksizesilder" modaltitle="Links/Apps Size" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                    <div class="row">
+                        <h3 class="row-title {{$root.Colors.Text}}">Links Size</h3>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="{{$root.Colors.Text}}">Links Size xs</label>
+                            <rzslider rz-slider-model="$root.Settings.LinksSizeExtraSmall" rz-slider-options="$root.Settings.LinksOptionsExtraSmall"></rzslider>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="{{$root.Colors.Text}}">Links Size sm</label>
+                            <rzslider rz-slider-model="$root.Settings.LinksSizeSmall" rz-slider-options="$root.Settings.LinksOptionsSmall"></rzslider>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="{{$root.Colors.Text}}">Links Size md</label>
+                            <rzslider rz-slider-model="$root.Settings.LinksSizeMedium" rz-slider-options="$root.Settings.LinksOptionsMedium"></rzslider>
+                        </div>
+                    </div>
+                    <hr class="form-horizontal" />
+                    <div class="row">
+                        <h3 class="row-title {{$root.Colors.Text}}">Apps Size</h3>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="{{$root.Colors.Text}}">Apps Size xs</label>
+                            <rzslider rz-slider-model="$root.Settings.AppsSizeExtraSmall" rz-slider-options="$root.Settings.AppsOptionsExtraSmall"></rzslider>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="{{$root.Colors.Text}}">Apps Size sm</label>
+                            <rzslider rz-slider-model="$root.Settings.AppsSizeSmall" rz-slider-options="$root.Settings.AppsOptionsSmall"></rzslider>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="{{$root.Colors.Text}}">Apps Size md</label>
+                            <rzslider rz-slider-model="$root.Settings.AppsSizeMedium" rz-slider-options="$root.Settings.AppsOptionsMedium"></rzslider>
+                        </div>
+                    </div>
+                    <zackry-buttons zclass="col-md-4" zisempty="false" zisfocused="false" zid="updatevisibility" zname="updatevisibility" zlabel="Update Visibility" ztype="btn-primary" zonclick="$root.Settings.SaveVisibility()" zdatadismiss="modal"></zackry-buttons>
+                </zackry-modals>
+
+
+</div>
     </div>
 </div>
