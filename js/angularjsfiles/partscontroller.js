@@ -2566,7 +2566,7 @@ appManager.controller('headController', [
             Save: function () {
                 $rootScope.Loader.PageLoader.Show();
                 var aBlockedUrlsLoading = document.createElement('a');
-                aBlockedUrlsLoading.href = $rootScope.BlockedUrls.BlockedUrl.Value;
+                aBlockedUrlsLoading.href = $rootScope.BlockedUrls.BlockedUrl.Value.trim();
                 var finalUrlBlockedUrlsLoading = aBlockedUrlsLoading.protocol + '//' + aBlockedUrlsLoading.hostname;
 
                 if ($rootScope.BlockedUrls.IsEmpty()) {
