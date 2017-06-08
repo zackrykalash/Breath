@@ -2554,6 +2554,7 @@ appManager.controller('headController', [
 
         $rootScope.BlockedUrls = {
             BlockedUrls: [],
+            BlockedUrlsArray: [],
             BlockedUrl: {
                 Title:""
                 ,Value:""
@@ -2591,6 +2592,7 @@ appManager.controller('headController', [
             },
             Remove: function (value) {
                 $rootScope.BlockedUrls.BlockedUrls[value.Value] = undefined;
+                $rootScope.BlockedUrls.ReFillBlockedUrlsArray();
                 $rootScope.Save.SaveDynamic("Blocked Urls", $rootScope.BlockedUrls.BlockedUrls, "BlockedUrls");
             },
             RemoveALL: function (value) {
@@ -2600,7 +2602,14 @@ appManager.controller('headController', [
                 chrome.storage.local.get("BlockedUrls", function (blockedUrls) {
                     if (!!blockedUrls.BlockedUrls) {
                         $rootScope.BlockedUrls.BlockedUrls = blockedUrls.BlockedUrls;
+                        $rootScope.BlockedUrls.ReFillBlockedUrlsArray();
                     }
+                });
+            },
+            ReFillBlockedUrlsArray:function(){
+                $rootScope.BlockedUrls.BlockedUrlsArray = [];
+                angular.forEach($rootScope.BlockedUrls.BlockedUrls, function (value, key) {
+                    $rootScope.BlockedUrls.BlockedUrlsArray.push(value);
                 });
             },
             EmptyBlockedUrls: function () {

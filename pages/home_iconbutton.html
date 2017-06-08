@@ -88,6 +88,48 @@
                 <zackry-clear-floats></zackry-clear-floats>
                 <hr class="form-horizontal" />
 
+                    <div class="row">
+                        <zackry_panel paneltitle="Basic Information" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                            <form class="col-md-12 usersadd percntage_form remove_input_padding" enctype="multipart/form-data">
+                                <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4 col-sm-4 col-xs-4" zisempty="true" ztype="text" zname="title" zid="title" zlabel="Title" zmodel="$root.BlockedUrls.BlockedUrl.Title"></zackry_form_group_input>
+                                <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zclass="col-md-4 col-sm-4 col-xs-4" zisempty="true" ztype="text" zname="url" zid="url" zlabel="URL" zmodel="$root.BlockedUrls.BlockedUrl.Value"></zackry_form_group_input>
+                                <zackry-form-group-select zisempty="true" ztextclass="{{$root.Colors.Text}}" zclass="col-md-4 col-sm-4 col-xs-4" zname="whole" zid="whole" zlabel="Whole" zchoices="$root.Settings.Select.YesNo" zmodel="$root.BlockedUrls.BlockedUrl.Whole"></zackry-form-group-select>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <zackry-buttons zdisabled="($root.BlockedUrls.IsEmpty())" zclass="col-md-4" zisempty="false" zisfocused="false" zid="addlink" zname="addlink" zlabel="Add Link" ztype="btn-default" zonclick="$root.BlockedUrls.Save()"></zackry-buttons>
+                                    </div>
+                                </div>
+                            </form>
+                        </zackry_panel>
+                    </div>
+                    <div class="row">
+                        <zackry_panel paneltitle="Blocked Urls" zclass="{{$root.Colors.Background + ' ' + $root.Colors.Opacity}}" ztextclass="{{$root.Colors.Text}}">
+                            <div class="row">
+                                <zackry_form_group_input ztextclass="{{$root.Colors.Text}}" zisempty="true" zclass="col-md-3" ztype="text" zname="blocksearch" zid="blocksearch" zlabel="Filter your Blocked URLs:" zmodel="blockSearch"></zackry_form_group_input>
+                            </div>
+                            <div class="row">
+                                <ul class="{{$root.Colors.Text}}">
+                                    <li class="col-md-6 col-sm-3 col-xs-3 downloads-li {{$root.Colors.Text}}" ng-repeat="blockedUrl in $root.BlockedUrls.BlockedUrlsArray  | orderBy: ['-Title'] | filter: blockSearch track by $index">
+                                        <div class="recent-post clearfix">
+                                            <h3 class="post-title">
+                                                <a class="cursor-pointer {{$root.Colors.Text}}">{{blockedUrl.Title}}</a>
+                                            </h3>
+                                            <p>{{blockedUrl.Value}}</p>
+                                            <button class="btn btn-danger remove-button fix-btn-height nopadding nomargin text-right" type="button" ng-click="$root.BlockedUrls.Remove(blockedUrl)">
+                                                <i class="fa fa-times text-danger"></i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </zackry_panel>
+                    </div>
+
+
+                <zackry-clear-floats></zackry-clear-floats>
+                <hr class="form-horizontal" />
+                 
+
                 <div class="row" ng-show="($root.DownloadManager.Downloads.length > 0)">
                     <div class="col-md-12 col-sm-12 col-xs-12" ng-repeat="download in $root.DownloadManager.Downloads track by $index">
                         <ul class="breadcrumb" style="margin-bottom: 5px;">
